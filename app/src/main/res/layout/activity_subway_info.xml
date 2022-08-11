@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SubwayInfoActivity">
+
+    <LinearLayout
+        android:id="@+id/subinfo_layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="30dp"
+            android:layout_weight="9"
+            android:text="지하철 정보"
+            android:textSize="55px" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/subinfo_imageView1"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_subinfo_rec" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/subinfo_imageView2"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="5dp"
+                    app:srcCompat="@drawable/ic_subway"
+                    app:tint="#FFFFFF" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="지하철 노선도"
+                    android:textColor="#FFFFFF"
+                    android:textSize="35px" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/subinfo_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/subinfo_layout1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="30dp"
+            android:layout_weight="7"
+            android:text="주변 지하철"
+            android:textSize="50px" />
+
+        <ImageView
+            android:id="@+id/subinfo_imageView3"
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_my_location"
+            app:tint="#000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="서울, 노원구"
+            android:textSize="40px" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/subinfo_layout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subinfo_layout2">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/subinfo_rec"
+                android:layout_width="320dp"
+                android:layout_height="200dp"
+                app:srcCompat="@drawable/ic_subinfo_rec2" />
+
+            <LinearLayout
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/subinfo_subname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="2"
+                    android:gravity="left"
+                    android:text="태릉입구역"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/subinfo_subline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:layout_weight="3"
+                    android:text="6호선" />
+
+                <TextView
+                    android:id="@+id/subinfo_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:layout_weight="3"
+                    android:text="오전 2:11 기준" />
+
+                <ImageView
+                    android:id="@+id/subinfo_refresh"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:gravity="right"
+                    android:layout_weight="2"
+                    android:layout_marginRight="10dp"
+                    app:srcCompat="@drawable/ic_subinfo_refresh" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                app:srcCompat="@drawable/ic_subinfo_line" />
+
+            <LinearLayout
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            </LinearLayout>
+
+        </FrameLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

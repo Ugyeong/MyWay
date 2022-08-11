@@ -3,20 +3,38 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/youn6/AndroidStudioProjects/MyWay/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2265" />
-        <entry key="..\:/Users/youn6/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_elevator.xml" value="0.133" />
-        <entry key="..\:/Users/youn6/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_escalator.xml" value="0.133" />
-        <entry key="..\:/Users/youn6/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_home.xml" value="0.2265" />
-        <entry key="..\:/Users/youn6/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2265" />
-        <entry key="..\:/Users/youn6/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_settings.xml" value="0.2265" />
-        <entry key="..\:/Users/youn6/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_subway.xml" value="0.2265" />
-        <entry key="..\:/Users/youn6/AndroidStudioProjects/MyWay/app/src/main/res/layout/activity_main.xml" value="0.23157894736842105" />
-        <entry key="..\:/Users/youn6/AndroidStudioProjects/MyWay/app/src/main/res/menu/bottom_menu.xml" value="0.1" />
-        <entry key="..\:/Users/youn6/AndroidStudioProjects/MyWay/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2265" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable-v24/ic_subinfo_line2.xml" value="0.206" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_elevator.xml" value="0.232" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_ellipse_89.xml" value="0.206" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_escalator.xml" value="0.232" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_facilities_circle1.xml" value="0.206" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_facilities_circle2.xml" value="0.206" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_facilities_circle3.xml" value="0.206" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_facilities_circle4.xml" value="0.206" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_facilities_rectangle.xml" value="0.206" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_group_1.xml" value="0.206" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_home.xml" value="0.21" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_my_location.xml" value="0.232" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_nursing_room.xml" value="0.206" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_previous.xml" value="0.232" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_settings.xml" value="0.21" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_subinfo_line.xml" value="0.206" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_subinfo_rec.xml" value="0.206" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_subway.xml" value="0.21" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_에스컬레이터.xml" value="0.232" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_엘리베이터.xml" value="0.21" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/layout/activity_facilities.xml" value="0.2" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/layout/activity_facilities_location.xml" value="0.21936936936936938" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/layout/activity_login.xml" value="0.21936936936936938" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/layout/activity_settings.xml" value="0.21936936936936938" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/layout/activity_sign_up.xml" value="0.21936936936936938" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/layout/activity_subway_info.xml" value="0.264" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/menu/bottom_menu.xml" value="0.25364583333333335" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

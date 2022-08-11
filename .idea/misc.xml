@@ -3,6 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.133" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/drawable/ic_escalator.xml" value="0.133" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/drawable/shape_blue.xml" value="0.1" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/drawable/shape_gray.xml" value="0.133" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/layout/activity_empty_seat.xml" value="0.2884963768115942" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/layout/activity_qrscan.xml" value="0.2884963768115942" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/layout/activity_splash.xml" value="0.2884963768115942" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/layout/bottomsheet_seatnum.xml" value="0.2884963768115942" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable-v24/ic_subinfo_line2.xml" value="0.206" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_elevator.xml" value="0.232" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_ellipse_89.xml" value="0.206" />

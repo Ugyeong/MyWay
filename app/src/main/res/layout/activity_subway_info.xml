@@ -173,8 +173,28 @@
 
             <LinearLayout
                 android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="105dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="72dp">
+
+                <LinearLayout
+                    android:layout_width="160dp"
+                    android:layout_height="105dp"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/ic_subinfo_line2" />
+
+                <LinearLayout
+                    android:layout_width="160dp"
+                    android:layout_height="105dp"
+                    android:orientation="vertical">
+
+                </LinearLayout>
 
             </LinearLayout>
 

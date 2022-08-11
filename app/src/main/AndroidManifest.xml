@@ -14,9 +14,8 @@
         android:theme="@style/Theme.MyWay"
         tools:targetApi="31">
         <activity
-        android:name=".EmptySeat"
-        android:exported="false" />
-
+            android:name=".EmptySeat"
+            android:exported="false" />
         <activity
             android:name=".Splash"
             android:exported="true">
@@ -46,9 +45,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>

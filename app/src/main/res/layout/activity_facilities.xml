@@ -101,10 +101,13 @@
     <LinearLayout
         android:id="@+id/facilities_layout3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="130dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/border_bottom"
         android:gravity="center"
         android:orientation="horizontal"
+        android:paddingBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/facilities_layout4"
         app:layout_constraintTop_toBottomOf="@+id/facilities_layout2">
 
         <FrameLayout
@@ -213,10 +216,10 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/facilities_layout4"
         android:layout_width="match_parent"
         android:layout_height="550dp"
         android:orientation="vertical"
-        android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/facilities_layout3">
 

@@ -48,8 +48,6 @@
         app:passwordToggleEnabled="true"
         tools:ignore="MissingConstraints">
 
-
-
         <EditText
             android:id="@+id/EditPassword"
             android:layout_width="330dp"

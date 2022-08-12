@@ -1,9 +1,248 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".SignUpActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:text="회원가입"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:textSize="24dp"
+            android:paddingLeft="20dp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/TvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="성명"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:paddingLeft="25dp"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:id="@+id/EditName"
+            android:layout_width="360dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/btn_edit_corners"
+            android:hint="이름을 입력해주세요"
+            android:layout_gravity="center"
+            tools:ignore="MissingConstraints"/>
+
+        <TextView
+            android:id="@+id/TvEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이메일"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:paddingLeft="25dp"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:id="@+id/EditEmail"
+            android:layout_width="360dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/btn_edit_corners"
+            android:hint="myway@example.com"
+            android:inputType="textEmailAddress"
+            android:layout_gravity="center"
+            tools:ignore="MissingConstraints"/>
+
+        <TextView
+            android:id="@+id/TvPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="비밀번호"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:paddingLeft="25dp"
+            tools:ignore="MissingConstraints" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:passwordToggleEnabled="true"
+            tools:ignore="MissingConstraints">
+
+            <EditText
+                android:id="@+id/EditPassword"
+                android:layout_width="360dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:background="@drawable/btn_edit_corners"
+                android:hint="영문, 숫자, 특수문자 2가지 조합"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/TvPasswordChk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="비밀번호 확인"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:paddingLeft="25dp"
+            android:paddingTop="20dp"
+            tools:ignore="MissingConstraints" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutChk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:passwordToggleEnabled="true"
+            tools:ignore="MissingConstraints">
+
+        <EditText
+            android:id="@+id/EditPasswordChk"
+            android:layout_width="360dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_edit_corners"
+            android:hint="비밀번호를 한 번 더 입력해주세요"
+           android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/TvHospital"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="병원"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:paddingLeft="25dp"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:id="@+id/EditHospital"
+            android:layout_width="360dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/btn_edit_corners"
+            android:hint="병원을 입력하세요"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:layout_gravity="center"
+            tools:ignore="MissingConstraints"/>
+
+
+        <TextView
+            android:id="@+id/TvPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="휴대폰 인증"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:paddingLeft="25dp"
+            tools:ignore="MissingConstraints" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/EditPhoneNumber"
+                android:layout_width="360dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/btn_edit_corners"
+                android:hint="핸드폰 번호를  - 없이 입력해주세요"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/BtnPhoneNumber"
+                android:layout_width="75dp"
+                android:layout_height="40dp"
+                android:layout_gravity="right|top"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/search_border"
+                android:text="인증번호 받기"
+                android:textColor="#000000"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints" />
+
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/TvNumberChk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="인증번호 입력"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:paddingLeft="25dp"
+            android:paddingTop="20dp"
+            tools:ignore="MissingConstraints" />
+
+
+        <EditText
+            android:id="@+id/EditNumberChk"
+            android:layout_width="360dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/btn_edit_corners"
+            android:hint="인증번호를 입력해주세요"
+            tools:ignore="MissingConstraints" />
+
+
+        <Button
+            android:id="@+id/BtnSignUp"
+            android:layout_width="360dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/btn_corners"
+            android:text="회원가입 하기"
+            android:textColor="#fff"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            tools:ignore="MissingConstraints" />
+
+    </LinearLayout>
+
+
+</ScrollView>

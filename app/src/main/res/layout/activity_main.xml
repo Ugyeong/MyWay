@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,6 +44,7 @@
             tools:ignore="InvalidId,MissingConstraints"/>
 
         <LinearLayout
+            android:id="@+id/ChkLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -78,6 +78,38 @@
         </LinearLayout>
 
     </LinearLayout>
+    <FrameLayout
+        app:layout_constraintBottom_toTopOf="@id/ChopNavigationBar"
+        android:paddingTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="50dp"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/TvSupport"
+            android:layout_width="380dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_edit_corners"
+            android:gravity="left|center"
+            android:text="서울시 임산부 교통비 지원사업"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints" />
+
+        <ImageButton
+            android:id="@+id/SupportBtn"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="right|center_vertical"
+            android:layout_margin="20dp"
+            android:padding="0dp"
+            android:src="@drawable/arrow"
+            tools:ignore="MissingConstraints" />
+
+    </FrameLayout>
 
     <!--<com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigationView"
@@ -93,9 +125,10 @@
         app:menu="@menu/bottom_menu" />-->
 
     <com.ismaeldivita.chipnavigation.ChipNavigationBar
+        android:id="@+id/ChopNavigationBar"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="@color/bottom_menu"
+        android:background="@drawable/bottom_bar"
         android:gravity="center"
         android:elevation="16dp"
         app:cnb_menuResource="@menu/bottom_menu"

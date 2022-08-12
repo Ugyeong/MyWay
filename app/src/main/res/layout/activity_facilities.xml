@@ -63,11 +63,49 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/facilities_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/search_border"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/facilities_layout1"
+        android:layout_marginTop="10dp">
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="태릉입구역"
+            android:textSize="15dp"/>
+
+        <ImageButton
+            android:id="@+id/searchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:backgroundTint="#00FFFFFF"
+            app:srcCompat="@drawable/ic_baseline_search_24" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/facilities_layout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/facilities_layout1"
-        android:gravity="center">
+        app:layout_constraintTop_toBottomOf="@+id/facilities_layout2">
 
         <FrameLayout
             android:layout_width="wrap_content"
@@ -83,8 +121,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/facilities_imageView6"
@@ -112,27 +150,27 @@
                 android:layout_height="110dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                app:tint="#E7F2FF"
-                app:srcCompat="@drawable/ic_facilities_circle" />
+                app:srcCompat="@drawable/ic_facilities_circle"
+                app:tint="#E7F2FF" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/facilities_imageView7"
                     android:layout_width="30dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/ic_escalator"/>
+                    app:srcCompat="@drawable/ic_escalator" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="에스컬레이터"
-                    android:textSize="30px"/>
+                    android:textSize="30px" />
 
             </LinearLayout>
 
@@ -146,33 +184,50 @@
                 android:id="@+id/facilities_imageView5"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
-                app:tint="#FFF1F1"
-                app:srcCompat="@drawable/ic_facilities_circle" />
+                app:srcCompat="@drawable/ic_facilities_circle"
+                app:tint="#FFF1F1" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/facilities_imageView8"
                     android:layout_width="30dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/ic_nursing_room"/>
+                    app:srcCompat="@drawable/ic_nursing_room" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="수유실"
-                    android:textSize="30px"/>
+                    android:textSize="30px" />
 
             </LinearLayout>
 
         </FrameLayout>
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/facilities_layout3">
+
+        <fragment
+            android:id="@+id/facilities_map"
+            android:name="com.naver.maps.map.MapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
 
 
 

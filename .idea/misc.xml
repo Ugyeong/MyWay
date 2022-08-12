@@ -23,13 +23,16 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_subway.xml" value="0.21" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_에스컬레이터.xml" value="0.232" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_엘리베이터.xml" value="0.21" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/layout/activity_facilities.xml" value="0.2" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/layout/activity_empty_seat.xml" value="0.21936936936936938" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/layout/activity_facilities.xml" value="0.4" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/layout/activity_facilities_location.xml" value="0.21936936936936938" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/layout/activity_login.xml" value="0.21936936936936938" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/layout/activity_settings.xml" value="0.21936936936936938" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/layout/activity_sign_up.xml" value="0.21936936936936938" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/layout/activity_splash.xml" value="0.21936936936936938" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/layout/activity_subway_info.xml" value="0.264" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/layout/bottomsheet_seatnum.xml" value="0.21936936936936938" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/menu/bottom_menu.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/youn6/AndroidStudioProjects/MyWay_2/app/src/main/res/drawable/btn_corners.xml" value="0.143" />
         <entry key="..\:/Users/youn6/AndroidStudioProjects/MyWay_2/app/src/main/res/drawable/btn_edit_corners.xml" value="0.143" />

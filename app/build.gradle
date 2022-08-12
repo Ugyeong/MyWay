@@ -39,4 +39,7 @@ dependencies {
     // 하단바
     implementation 'com.github.ismaeldivita:chip-navigation-bar:1.4.0'
 
+    //네이버지도
+    implementation 'com.naver.maps:map-sdk:3.15.0'
+
 }

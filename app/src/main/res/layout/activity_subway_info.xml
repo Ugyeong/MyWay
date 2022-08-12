@@ -28,13 +28,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="20dp"
             android:layout_weight="1">
 
             <ImageView
                 android:id="@+id/subinfo_imageView1"
-                android:layout_width="150dp"
-                android:layout_height="30dp"
+                android:layout_width="135dp"
+                android:layout_height="32dp"
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/ic_subinfo_rec" />
 
@@ -106,7 +106,7 @@
         android:id="@+id/subinfo_layout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subinfo_layout2">
@@ -144,7 +144,9 @@
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:layout_weight="3"
-                    android:text="6호선" />
+                    android:text="6호선"
+                    android:textColor="#A95623"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/subinfo_time"
@@ -178,11 +180,76 @@
                 android:layout_marginTop="72dp">
 
                 <LinearLayout
-                    android:layout_width="160dp"
+                    android:layout_width="155dp"
                     android:layout_height="105dp"
                     android:orientation="vertical">
 
-                </LinearLayout>
+                    <TextView
+                        android:id="@+id/subinfo_dir1"
+                        android:layout_gravity="center"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="석계 방향"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/subinfo_set1"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="응암순환"/>
+
+                        <TextView
+                            android:id="@+id/subinfo_set1_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="3분"
+                            android:textColor="#407BFF"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/subinfo_set2"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="응암순환"/>
+
+                        <TextView
+                            android:id="@+id/subinfo_set2_time"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="11분"
+                            android:textColor="#407BFF"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+               </LinearLayout>
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -190,9 +257,74 @@
                     app:srcCompat="@drawable/ic_subinfo_line2" />
 
                 <LinearLayout
-                    android:layout_width="160dp"
+                    android:layout_width="150dp"
                     android:layout_height="105dp"
                     android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/subinfo_dir2"
+                        android:layout_gravity="center"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="화랑대 방향"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/subinfo_set3"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="봉화산"/>
+
+                        <TextView
+                            android:id="@+id/subinfo_set3_time"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="4분"
+                            android:textColor="#407BFF"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/subinfo_set4"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="신내"/>
+
+                        <TextView
+                            android:id="@+id/subinfo_set4_time"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="12분"
+                            android:textColor="#407BFF"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -203,9 +335,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="420dp"
+        android:layout_height="430dp"
         android:orientation="vertical"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subinfo_layout3">
 

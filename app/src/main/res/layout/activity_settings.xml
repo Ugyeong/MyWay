@@ -98,6 +98,7 @@
         app:srcCompat="@drawable/dot_setting" />
 
     <com.ismaeldivita.chipnavigation.ChipNavigationBar
+        android:id="@+id/ChipNavigationBar"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_gravity="bottom"

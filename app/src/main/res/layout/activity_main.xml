@@ -79,7 +79,7 @@
 
     </LinearLayout>
     <FrameLayout
-        app:layout_constraintBottom_toTopOf="@id/ChopNavigationBar"
+        app:layout_constraintBottom_toTopOf="@id/ChipNavigationBar"
         android:paddingTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -125,7 +125,7 @@
         app:menu="@menu/bottom_menu" />-->
 
     <com.ismaeldivita.chipnavigation.ChipNavigationBar
-        android:id="@+id/ChopNavigationBar"
+        android:id="@+id/ChipNavigationBar"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@drawable/bottom_bar"

@@ -44,6 +44,7 @@
             android:layout_marginBottom="20dp"
             android:background="@drawable/btn_edit_corners"
             android:hint="이름을 입력해주세요"
+            android:paddingLeft="10dp"
             android:layout_gravity="center"
             tools:ignore="MissingConstraints"/>
 
@@ -62,13 +63,14 @@
             android:id="@+id/EditEmail"
             android:layout_width="360dp"
             android:layout_height="60dp"
+            android:layout_gravity="center"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/btn_edit_corners"
             android:hint="myway@example.com"
             android:inputType="textEmailAddress"
-            android:layout_gravity="center"
-            tools:ignore="MissingConstraints"/>
+            android:paddingLeft="10dp"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/TvPassword"
@@ -97,6 +99,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/btn_edit_corners"
                 android:hint="영문, 숫자, 특수문자 2가지 조합"
+                android:paddingLeft="10dp"
                 android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -129,6 +132,7 @@
             android:layout_gravity="center"
             android:background="@drawable/btn_edit_corners"
             android:hint="비밀번호를 한 번 더 입력해주세요"
+            android:paddingLeft="10dp"
            android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -153,6 +157,7 @@
             android:layout_marginBottom="20dp"
             android:background="@drawable/btn_edit_corners"
             android:hint="병원을 입력하세요"
+            android:paddingLeft="10dp"
             android:imeOptions="actionSearch"
             android:inputType="text"
             android:layout_gravity="center"
@@ -182,6 +187,7 @@
                 android:layout_marginTop="5dp"
                 android:background="@drawable/btn_edit_corners"
                 android:hint="핸드폰 번호를  - 없이 입력해주세요"
+                android:paddingLeft="10dp"
                 tools:ignore="MissingConstraints" />
 
             <Button
@@ -191,7 +197,7 @@
                 android:layout_gravity="right|top"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="25dp"
                 android:background="@drawable/search_border"
                 android:text="인증번호 받기"
                 android:textColor="#000000"
@@ -223,6 +229,7 @@
             android:layout_marginTop="5dp"
             android:background="@drawable/btn_edit_corners"
             android:hint="인증번호를 입력해주세요"
+            android:paddingLeft="10dp"
             tools:ignore="MissingConstraints" />
 
 

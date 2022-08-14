@@ -342,7 +342,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subinfo_layout3">
 
-        <fragment
+        <com.naver.maps.map.MapView
             android:id="@+id/subinfo_map"
             android:name="com.naver.maps.map.MapFragment"
             android:layout_width="match_parent"
@@ -351,6 +351,7 @@
     </LinearLayout>
 
     <com.ismaeldivita.chipnavigation.ChipNavigationBar
+        android:id="@+id/ChipNavigationBar"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@drawable/bottom_bar"

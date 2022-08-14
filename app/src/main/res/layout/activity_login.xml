@@ -90,7 +90,7 @@
             android:textColor="#959595"/>
 
         <TextView
-            android:id="@+id/TvLogin"
+            android:id="@+id/TvSingUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"

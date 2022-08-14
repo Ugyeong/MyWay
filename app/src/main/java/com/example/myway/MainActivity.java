@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
@@ -19,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     ImageButton ChkPositionBtn;
     ImageButton SupportBtn;
     ChipNavigationBar ChipNavigationBar;
+    String name;
+    String hospital;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,11 @@ public class MainActivity extends AppCompatActivity {
         ChkPositionBtn = findViewById(R.id.ChkPositionBtn);
         SupportBtn = findViewById(R.id.SupportBtn);
         ChipNavigationBar = findViewById(R.id.ChipNavigationBar);
+
+        // 인텐트 전달받기
+        Intent intent = getIntent();
+        name = intent.getStringExtra("name");
+        hospital = intent.getStringExtra("hospital");
 
 
         QRBtn.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.settings:{
                         Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+                        intent.putExtra("name", name);
+                        intent.putExtra("hospital", hospital); //설정 activity에 회원정보를 출력하기 위해 정보를 넘겨준다
                         startActivity(intent);
                         break;
                     }

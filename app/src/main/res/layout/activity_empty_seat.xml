@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/facilities_imageView1"
+            android:id="@+id/btnPrev"
             android:layout_width="10dp"
             android:layout_height="15dp"
             android:layout_gravity="center"
@@ -85,11 +85,11 @@
             android:paddingStart="20dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="Name"
+            android:text="태릉입구역 6호선"
             android:textSize="15dp" />
 
         <ImageButton
-            android:id="@+id/searchButton"
+            android:id="@+id/btnsearch"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="10dp"

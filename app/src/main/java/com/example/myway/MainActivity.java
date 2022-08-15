@@ -27,6 +27,7 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
 
     ImageButton QRBtn;
+    ImageButton CompletedBtn;
     ImageButton ChkEmptySeatBtn;
     ImageButton ChkPositionBtn;
     ImageButton SupportBtn;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     IntentIntegrator qr;
     ImageButton btnOk;
     ImageButton btnCancel;
+    TextView completedSeatnum;
 
 
     @Override
@@ -53,10 +55,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         QRBtn = findViewById(R.id.QRBtn);
+        CompletedBtn = findViewById(R.id.CompletedBtn);
         ChkEmptySeatBtn = findViewById(R.id.ChkEmptySeatBtn);
         ChkPositionBtn = findViewById(R.id.ChkPositionBtn);
         SupportBtn = findViewById(R.id.SupportBtn);
         ChipNavigationBar = findViewById(R.id.ChipNavigationBar);
+        completedSeatnum = findViewById(R.id.completedSeatnum);
 
         // 인텐트 전달받기
         Intent intent = getIntent();
@@ -82,6 +86,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //좌석 명 전달, 착석 인증되도록 버튼 변경
                 bottomSheetDialog.dismiss();
+                QRBtn.setVisibility(View.GONE);  //착석 인증 버튼이 동작하지 않도록 변경
+                CompletedBtn.setVisibility(View.VISIBLE);  //착석 취소버튼 보이도록 수정
+                completedSeatnum.setText(seatnum);  //QR에서 받아온 좌석 번호로 설정
+                completedSeatnum.setVisibility(View.VISIBLE);
             }
         });
 
@@ -92,9 +100,20 @@ public class MainActivity extends AppCompatActivity {
                 //startActivity(intent);
                 //qr인증 카메라 뜸
                 qr = new IntentIntegrator(MainActivity.this);
-                qr.setOrientationLocked(false);  //세로로 스캔하기
+                qr.setOrientationLocked(false);  //세로로 스캔하기  동작 안되는 중???????
+                qr.setPrompt("임산부석 위에 부착된 QR코드를 찍어 착석을 인증해주세요");
                 qr.initiateScan();
+            }
+        });
 
+        //착석 취소버튼 누르면  ->  착석 인증 버튼 보임. 착성 취소버튼 동작하지 않음.
+        CompletedBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CompletedBtn.setVisibility(View.GONE);  //착석 취소버튼 안보이도록 수정
+                completedSeatnum.setText("");  //좌석 번호 반환됨
+                completedSeatnum.setVisibility(View.INVISIBLE);
+                QRBtn.setVisibility(View.VISIBLE);
             }
         });
 
@@ -163,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
         if (result != null) {
             //qrcode 가 없으면
             if (result.getContents() == null) {
-                Toast.makeText(MainActivity.this, "취소!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "잘못된 QR코드입니다.", Toast.LENGTH_SHORT).show();
             } else {
                 //qrcode 결과가 있으면
                 Toast.makeText(MainActivity.this, "스캔완료!", Toast.LENGTH_SHORT).show();

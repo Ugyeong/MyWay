@@ -33,41 +33,79 @@
         </LinearLayout>
 
 
-        <ImageButton
-            android:id="@+id/QRBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="3dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:src="@drawable/qr"
-            tools:ignore="InvalidId,MissingConstraints"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/CompletedBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="3dp"
+                android:adjustViewBounds="true"
+                android:backgroundTint="@color/white"
+                android:padding="3dp"
+                android:scaleType="fitCenter"
+                android:visibility="gone"
+                app:srcCompat="@drawable/btncompleted3" />
+
+            <ImageButton
+                android:id="@+id/QRBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:adjustViewBounds="true"
+                android:padding="3dp"
+                android:scaleType="fitCenter"
+
+                android:src="@drawable/qr"
+                android:visibility="visible"
+                tools:ignore="InvalidId,MissingConstraints" />
+
+            <TextView
+                android:id="@+id/completedSeatnum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="80dp"
+                android:text="좌석 번호"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:visibility="invisible" />
+        </FrameLayout>
 
         <LinearLayout
             android:id="@+id/ChkLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             tools:ignore="MissingConstraints">
 
             <ImageButton
                 android:id="@+id/ChkEmptySeatBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:backgroundTint="@color/white"
                 android:maxWidth="200dp"
                 android:maxHeight="200dp"
                 android:padding="3dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/chk_empty_seat"
-                tools:ignore="InvalidId,MissingConstraints"/>
+                tools:ignore="InvalidId,MissingConstraints" />
 
             <ImageButton
                 android:id="@+id/ChkPositionBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:backgroundTint="@android:color/white"
                 android:maxWidth="200dp"
                 android:maxHeight="200dp"
                 android:padding="3dp"
@@ -78,12 +116,12 @@
         </LinearLayout>
 
     </LinearLayout>
+
     <FrameLayout
-        app:layout_constraintBottom_toTopOf="@id/ChipNavigationBar"
-        android:paddingTop="15dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="50dp"
+        android:layout_height="0dp"
+        android:paddingBottom="70dp"
+        app:layout_constraintBottom_toTopOf="@id/ChipNavigationBar"
         tools:ignore="MissingConstraints">
 
         <TextView
@@ -93,6 +131,7 @@
             android:layout_gravity="center"
             android:background="@drawable/btn_edit_corners"
             android:gravity="left|center"
+            android:paddingStart="15dp"
             android:text="서울시 임산부 교통비 지원사업"
             android:textColor="#000000"
             android:textSize="18dp"

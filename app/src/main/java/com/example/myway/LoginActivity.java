@@ -38,8 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         EditPassword = findViewById(R.id.EditPassword);
         BtnLogin = findViewById(R.id.BtnLogin);
         TvSingUp = findViewById(R.id.TvSingUp);
-        DBManager = new DBManager(getApplicationContext(), "MyWay", null,1); //MyWay라는 DB를 생성
-        db = DBManager.getReadableDatabase(); // select문 실행할 것이므로 DB를 읽을 수 있도록 함
+
 
 
         BtnLogin.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +81,8 @@ public class LoginActivity extends AppCompatActivity {
     @SuppressLint("Range")
     private Boolean login (String email, String password){
 
+        DBManager = new DBManager(getApplicationContext(), "MyWay", null,1); //MyWay라는 DB를 생성
+        db = DBManager.getReadableDatabase(); // select문 실행할 것이므로 DB를 읽을 수 있도록 함
         cursor = db.rawQuery("select * from account where email='"+ email+"';", null);
 
         if(cursor.getCount()>0){ //입력한 이메일을 사용하는 회원이 있을 때

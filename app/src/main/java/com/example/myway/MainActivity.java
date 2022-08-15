@@ -16,7 +16,9 @@ import android.widget.Toast;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.google.zxing.qrcode.encoder.QRCode;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
+import com.journeyapps.barcodescanner.CaptureActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -103,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 qr.setOrientationLocked(false);  //세로로 스캔하기  동작 안되는 중???????
                 qr.setPrompt("임산부석 위에 부착된 QR코드를 찍어 착석을 인증해주세요");
                 qr.initiateScan();
+
             }
         });
 

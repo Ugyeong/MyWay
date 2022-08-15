@@ -26,7 +26,7 @@
             android:name=".EmptySeat"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Splash"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,7 +41,7 @@
             android:name=".SubwayInfoActivity"
             android:exported="false" />
         <activity
-            android:name=".Splash"
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".SettingsActivity"

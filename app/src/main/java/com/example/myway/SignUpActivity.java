@@ -28,6 +28,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.gms.auth.api.phone.SmsRetriever;
 import com.google.android.gms.auth.api.phone.SmsRetrieverClient;
@@ -53,9 +54,13 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     EditText EditHospital;
     EditText EditPhoneNumber;
     EditText EditNumberChk;
+
     Button BtnEmailChk;
     Button  BtnSignUp;
     Button  BtnPhoneNumber;
+
+    TextView TvEmailWarning;
+    TextView TvpasswordChkWarning;
 
     String name;
     String email;
@@ -93,11 +98,14 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         BtnEmailChk = findViewById(R.id.BtnEmailChk);
         BtnSignUp = findViewById(R.id.BtnSignUp);
         BtnPhoneNumber = findViewById(R.id.BtnPhoneNumber);
+        TvEmailWarning = findViewById(R.id.TvEmailWarning);
+        TvpasswordChkWarning = findViewById(R.id.TvPasswordChkWarning);
 
 
        SmsReceiver = new SmsReceiver();
        ObservableObject.getInstance().addObserver(this);
 
+        //SMS 권한이 부여되어 있는지 확인하고 없으면 권한을 부여한다
        if ((ContextCompat.checkSelfPermission(this, Manifest.permission.READ_SMS) +
                ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS))
                != PackageManager.PERMISSION_GRANTED) {
@@ -107,7 +115,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                    ActivityCompat.shouldShowRequestPermissionRationale(this,"Manifest.permission.READ_SMS")) {
 
            } else {
-               // No explanation needed; request the permission
                ActivityCompat.requestPermissions(this,
                        new String[]{"Manifest.permission.READ_SMS, Manifest.permission.SEND_SMS"},
                        REQUEST_CODE);
@@ -115,8 +122,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
            }
        }
 
-       else {
-           // Permission has already been granted
+       else { // 권한이 이미 부여되어 있을 때
        }
 
        BtnEmailChk.setOnClickListener(new View.OnClickListener() {
@@ -137,6 +143,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                    dlg.setIcon(R.drawable.app_icon_my);
                    dlg.setPositiveButton("확인", null);
                    dlg.show();
+                   EditEmail.setText("");
                }
                else{
                    dlg.setTitle("사용가능한 이메일");
@@ -144,6 +151,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                    dlg.setIcon(R.drawable.app_icon_my);
                    dlg.setPositiveButton("확인", null);
                    dlg.show();
+                   EditPassword.requestFocus();
                }
                cursor.close();
                db.close();
@@ -237,10 +245,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void afterTextChanged(Editable editable) {
                 if(!android.util.Patterns.EMAIL_ADDRESS.matcher(editable.toString()).matches()){ //이메일 형식에 맞지 않을 때
-                    EditEmail.setTextColor(Color.parseColor("#FF0000")); //텍스트 색깔 변경
+                    TvEmailWarning.setText("이메일 형식에 맞지 않습니다"); //textView에 출력하기
                 }
                 else{
-                    EditEmail.setTextColor(Color.parseColor("#000000"));
+
+                    TvEmailWarning.setText("");
                 }
 
             }
@@ -261,11 +270,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             public void afterTextChanged(Editable editable) {
 
                 if(!EditPassword.getText().toString().equals(EditPasswordChk.getText().toString())){ //비밀번호가 일치하지 않을 때
-                    EditPasswordChk.setTextColor(Color.parseColor("#FF0000")); //텍스트 색깔 변경
+
+                    TvpasswordChkWarning.setText("비밀번호가 일치하지 않습니다");
                 }
-                else{
-                    //비밀번호가 일치할 때
-                    EditPasswordChk.setTextColor(Color.parseColor("#000000"));
+                else{//비밀번호가 일치할 때
+                    TvpasswordChkWarning.setText("");
                 }
 
             }
@@ -317,10 +326,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         String appInfo = packageName + " " + signature;
         try {
             MessageDigest messageDigest = MessageDigest.getInstance(HASH_TYPE);
-            // minSdkVersion이 19이상이면 체크 안해도 됨
-            //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            //messageDigest.update(appInfo.getBytes(StandardCharsets.UTF_8));
-            //}
             byte[] hashSignature = messageDigest.digest();
 
             // truncated into NUM_HASHED_BYTES
@@ -349,14 +354,12 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             public void onSuccess(Void aVoid) {
                 IntentFilter intentFilter = new IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION);
                 registerReceiver(SmsReceiver, intentFilter);
-                Log.e("test", "onSuccess");
             }
         });
 
         task.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Log.e("test", "onFailure" + e.toString());
             }
         });
     }

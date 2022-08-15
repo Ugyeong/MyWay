@@ -24,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     String email;
     String password;
     String hospital;
+    String name;
     DBManager DBManager;
     SQLiteDatabase db;
     Cursor cursor;
@@ -59,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                 else{
                    if(login(email, password)){
                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                       intent.putExtra("email", email);
+                       intent.putExtra("name",name);
                        intent.putExtra("hospital", hospital);
                        startActivity(intent);
                    }
@@ -87,6 +88,7 @@ public class LoginActivity extends AppCompatActivity {
             cursor.moveToNext();
             if(password.equals(cursor.getString(2))){ //이메일과 비밀번호가 일치할 때
                 hospital = cursor.getString(cursor.getColumnIndex("hospital")); //해당 회원의 병원이름을 저장해둔다
+                name = cursor.getString(cursor.getColumnIndex("name"));
                 cursor.close();
                 db.close();
                 DBManager.close();
@@ -109,6 +111,11 @@ public class LoginActivity extends AppCompatActivity {
             dlg.setPositiveButton("확인", null);
             dlg.show();
         }
+
+        //로그인에 실패했을 때 다시 입력하도록 텍스트들을 지운다.
+        EditEmail.setText("");
+        EditPassword.setText("");
+        EditEmail.requestFocus();
 
         cursor.close();
         db.close();

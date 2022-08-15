@@ -59,23 +59,9 @@
             android:paddingLeft="25dp"
             tools:ignore="MissingConstraints" />
 
-        <!--<EditText
-            android:id="@+id/EditEmail"
-            android:layout_width="360dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/btn_edit_corners"
-            android:hint="myway@example.com"
-            android:inputType="textEmailAddress"
-            android:paddingLeft="10dp"
-            tools:ignore="MissingConstraints" />-->
-
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="20dp">
+            android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/EditEmail"
@@ -104,6 +90,19 @@
                 tools:ignore="MissingConstraints" />
 
         </FrameLayout>
+
+        <TextView
+            android:id="@+id/TvEmailWarning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#FF0000"
+            android:layout_marginBottom="20dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:paddingLeft="25dp"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/TvPassword"
@@ -171,10 +170,23 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
+            android:id="@+id/TvPasswordChkWarning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#FF0000"
+            android:layout_marginBottom="20dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:paddingLeft="25dp"
+            tools:ignore="MissingConstraints"/>
+
+
+        <TextView
             android:id="@+id/TvHospital"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:text="병원"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textStyle="bold"

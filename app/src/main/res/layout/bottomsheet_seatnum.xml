@@ -45,12 +45,11 @@
         app:layout_constraintTop_toBottomOf="@+id/textView30" />
 
     <TextView
-        android:id="@+id/textView32"
-        android:layout_width="wrap_content"
+        android:id="@+id/seatNum"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="18dp"
-        android:layout_marginEnd="215dp"
         android:text="TextView"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,17 +57,16 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <TextView
-        android:id="@+id/textView33"
-        android:layout_width="wrap_content"
+        android:id="@+id/seatDate"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="14dp"
-        android:layout_marginEnd="179dp"
         android:text="00.00.00 00:00"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView31"
-        app:layout_constraintTop_toBottomOf="@+id/textView32" />
+        app:layout_constraintTop_toBottomOf="@+id/seatNum" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -82,7 +80,7 @@
         app:srcCompat="@drawable/shape_blue" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/btnOk"
         android:layout_width="128dp"
         android:layout_height="45dp"
         android:layout_marginTop="20dp"
@@ -92,11 +90,11 @@
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView33"
+        app:layout_constraintTop_toBottomOf="@+id/seatDate"
         app:srcCompat="@drawable/ok_button" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/btnCancel"
         android:layout_width="133dp"
         android:layout_height="47dp"
         android:layout_marginStart="56dp"

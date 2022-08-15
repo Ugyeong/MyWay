@@ -59,7 +59,7 @@
             android:paddingLeft="25dp"
             tools:ignore="MissingConstraints" />
 
-        <EditText
+        <!--<EditText
             android:id="@+id/EditEmail"
             android:layout_width="360dp"
             android:layout_height="60dp"
@@ -70,7 +70,40 @@
             android:hint="myway@example.com"
             android:inputType="textEmailAddress"
             android:paddingLeft="10dp"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints" />-->
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp">
+
+            <EditText
+                android:id="@+id/EditEmail"
+                android:layout_width="360dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/btn_edit_corners"
+                android:hint="myway@example.com"
+                android:paddingLeft="10dp"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/BtnEmailChk"
+                android:layout_width="75dp"
+                android:layout_height="40dp"
+                android:layout_gravity="right|top"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="27dp"
+                android:background="@drawable/search_border"
+                android:text="중복확인"
+                android:textColor="#000000"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints" />
+
+        </FrameLayout>
 
         <TextView
             android:id="@+id/TvPassword"
@@ -98,7 +131,7 @@
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:background="@drawable/btn_edit_corners"
-                android:hint="영문, 숫자, 특수문자 2가지 조합"
+                android:hint="비밀번호를 입력해주세요"
                 android:paddingLeft="10dp"
                 android:inputType="textPassword" />
 
@@ -125,15 +158,15 @@
             app:passwordToggleEnabled="true"
             tools:ignore="MissingConstraints">
 
-        <EditText
-            android:id="@+id/EditPasswordChk"
-            android:layout_width="360dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:background="@drawable/btn_edit_corners"
-            android:hint="비밀번호를 한 번 더 입력해주세요"
-            android:paddingLeft="10dp"
-           android:inputType="textPassword" />
+            <EditText
+                android:id="@+id/EditPasswordChk"
+                android:layout_width="360dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:background="@drawable/btn_edit_corners"
+                android:hint="비밀번호를 한 번 더 입력해주세요"
+                android:inputType="textPassword"
+                android:paddingLeft="10dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -156,7 +189,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/btn_edit_corners"
-            android:hint="병원을 입력하세요"
+            android:hint="병원을 입력해주세요"
             android:paddingLeft="10dp"
             android:imeOptions="actionSearch"
             android:inputType="text"

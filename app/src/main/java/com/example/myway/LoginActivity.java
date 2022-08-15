@@ -84,6 +84,7 @@ public class LoginActivity extends AppCompatActivity {
         cursor = db.rawQuery("select * from account where email='"+ email+"';", null);
 
         if(cursor.getCount()>0){ //입력한 이메일을 사용하는 회원이 있을 때
+            cursor.moveToNext();
             if(password.equals(cursor.getString(2))){ //이메일과 비밀번호가 일치할 때
                 hospital = cursor.getString(cursor.getColumnIndex("hospital")); //해당 회원의 병원이름을 저장해둔다
                 cursor.close();

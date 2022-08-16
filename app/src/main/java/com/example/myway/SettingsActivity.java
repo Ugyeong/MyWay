@@ -73,6 +73,8 @@ public class SettingsActivity extends AppCompatActivity {
         TvName.setText(name);
         hospital_name.setText(hospital);
 
+        ChipNavigationBar.setItemSelected(R.id.settings,true);  //네비게이션 바 세팅 선택되어 있도록 설정
+
         ChipNavigationBar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() { // 하단바를 통한 화면 이동코드
             @Override
             public void onItemSelected(int id) {
@@ -81,18 +83,21 @@ public class SettingsActivity extends AppCompatActivity {
                     case R.id.home:{
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
+                        finish();
                         break;
                     }
 
                     case R.id.subway:{
                         Intent intent = new Intent(getApplicationContext(), SubwayInfoActivity.class);
                         startActivity(intent);
+                        finish();
                         break;
                     }
 
                     case R.id.settings:{
                         Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
                         startActivity(intent);
+                        finish();
                         break;
                     }
                 }

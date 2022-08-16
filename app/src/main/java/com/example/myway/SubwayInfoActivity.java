@@ -31,6 +31,7 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
         mapView.getMapAsync(this);
         locationSource = new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
 
+        ChipNavigationBar.setItemSelected(R.id.subway,true);  //네비게이션 바 지하철 선택되어 있도록 설정
 
         ChipNavigationBar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() { // 하단바를 통한 화면 이동코드
             @Override
@@ -40,18 +41,21 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
                     case R.id.home:{
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
+                        finish();
                         break;
                     }
 
                     case R.id.subway:{
                         Intent intent = new Intent(getApplicationContext(), SubwayInfoActivity.class);
                         startActivity(intent);
+                        finish();
                         break;
                     }
 
                     case R.id.settings:{
                         Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
                         startActivity(intent);
+                        finish();
                         break;
                     }
                 }

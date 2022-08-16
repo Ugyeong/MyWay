@@ -1,5 +1,6 @@
 package com.example.myway;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,11 +11,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -28,7 +31,7 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     ImageButton QRBtn;
     ImageButton CompletedBtn;
@@ -68,10 +71,7 @@ public class MainActivity extends AppCompatActivity {
         ChipNavigationBar = findViewById(R.id.ChipNavigationBar);
         completedSeatnum = findViewById(R.id.completedSeatnum);
 
-        // 인텐트 전달받기
-        Intent intent = getIntent();
-        name = intent.getStringExtra("name");
-        hospital = intent.getStringExtra("hospital");
+        ChipNavigationBar.setItemSelected(R.id.home,true);
 
         //바텀시트 설정
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -180,12 +180,14 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.home:{
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
+                        finish();
                         break;
                     }
 
                     case R.id.subway:{
                         Intent intent = new Intent(getApplicationContext(), SubwayInfoActivity.class);
                         startActivity(intent);
+                        finish();
                         break;
                     }
 
@@ -194,14 +196,13 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra("name", name);
                         intent.putExtra("hospital", hospital); //설정 activity에 회원정보를 출력하기 위해 정보를 넘겨준다
                         startActivity(intent);
+                        finish();
                         break;
                     }
                 }
 
             }
         });
-
-
 
     }
     @Override

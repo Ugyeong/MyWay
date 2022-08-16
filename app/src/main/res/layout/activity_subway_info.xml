@@ -32,7 +32,7 @@
             android:layout_weight="1">
 
             <ImageView
-                android:id="@+id/subinfo_imageView1"
+                android:id="@+id/subinfo_submap"
                 android:layout_width="135dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center"
@@ -45,7 +45,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/subinfo_imageView2"
+                    android:id="@+id/subinfo_img1"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_marginRight="5dp"
@@ -83,7 +83,7 @@
             android:textSize="50px" />
 
         <ImageView
-            android:id="@+id/subinfo_imageView3"
+            android:id="@+id/subinfo_img2"
             android:layout_width="10dp"
             android:layout_height="20dp"
             android:layout_gravity="right"

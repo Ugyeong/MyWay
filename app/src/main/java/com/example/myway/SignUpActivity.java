@@ -52,21 +52,26 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     EditText EditPassword;
     EditText EditPasswordChk;
     EditText EditHospital;
+    EditText EditHospitalCode;
     EditText EditPhoneNumber;
     EditText EditNumberChk;
+
 
     Button BtnEmailChk;
     Button  BtnSignUp;
     Button  BtnPhoneNumber;
+    Button BtnHospitalCode;
 
     TextView TvEmailWarning;
     TextView TvpasswordChkWarning;
+    TextView TvHospitalCodeWarning;
 
     String name;
     String email;
     String password;
     String passwordchk;
     String hospital;
+    String hospitalCode;
     String phonenumber;
     String numberchk;
 
@@ -75,6 +80,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     //DB에 접근할 때 사용할 변수선언
     DBManager DBManager;
+    DBManager2 DBManager2;
     SQLiteDatabase db;
     Cursor cursor;
 
@@ -94,13 +100,18 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         EditPassword = findViewById(R.id.EditPassword);
         EditPasswordChk  = findViewById(R.id.EditPasswordChk);
         EditHospital = findViewById(R.id.EditHospital);
+        EditHospitalCode = findViewById(R.id.EditHospitalCode);
         EditPhoneNumber = findViewById(R.id.EditPhoneNumber);
         EditNumberChk = findViewById(R.id.EditNumberChk);
+
         BtnEmailChk = findViewById(R.id.BtnEmailChk);
         BtnSignUp = findViewById(R.id.BtnSignUp);
         BtnPhoneNumber = findViewById(R.id.BtnPhoneNumber);
+        BtnHospitalCode = findViewById(R.id.BtnHospitalCode);
+
         TvEmailWarning = findViewById(R.id.TvEmailWarning);
         TvpasswordChkWarning = findViewById(R.id.TvPasswordChkWarning);
+        TvHospitalCodeWarning = findViewById(R.id.TvHospitalCodeWarning);
 
 
        SmsReceiver = new SmsReceiver();
@@ -176,6 +187,44 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
            }
 
        });
+       BtnHospitalCode.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               hospital = EditHospital.getText().toString();
+               hospitalCode = EditHospitalCode.getText().toString();
+
+               if(hospital.isEmpty() || hospitalCode.isEmpty()){ // 두 필드중에 하나라도 입력되지 않았을 때
+                   AlertDialog.Builder dlg = new AlertDialog.Builder(SignUpActivity.this); // dialog창을 띄우기 위해 선언
+                   dlg.setTitle("임산부 인증 실패");
+                   dlg.setMessage("병원명과 병원 인증코드를 전부 입력하세요.");
+                   dlg.setIcon(R.drawable.app_icon_my);
+                   dlg.setPositiveButton("확인", null);
+                   dlg.show();
+                   return;
+               }
+               else{
+                   DBManager2 = new DBManager2(getApplicationContext(), "MyWayHospital", null,1); //MyWayHospital라는 DB에 접근가능
+                   db = DBManager2.getReadableDatabase(); // select문 실행할 것이므로 DB 데이터를 읽을 수 있도록 함
+                   cursor = db.rawQuery("select * from hospital where name='"+ hospital+"'and code='"+hospitalCode+"';", null);
+
+                   if(cursor.getCount()>0){ //임산부 인증 성공
+                       TvHospitalCodeWarning.setTextColor(Color.parseColor("#407BFF"));
+                       TvHospitalCodeWarning.setText("임산부 인증에 성공하였습니다");
+                       EditPhoneNumber.requestFocus(); // 포커스를 다음 EditText칸으로 이동시킨다
+
+                   }
+                   else{ //임산부 인증 실패
+                       TvHospitalCodeWarning.setTextColor(Color.parseColor("#FF0000")); //빨간색
+                       TvHospitalCodeWarning.setText("임산부 인증에 실패하였습니다");
+                   }
+
+                   cursor.close();
+                   db.close();
+                   DBManager2.close();
+               }
+
+           }
+       });
 
 
         BtnSignUp.setOnClickListener(new View.OnClickListener() {
@@ -186,15 +235,16 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 password = EditPassword.getText().toString();
                 passwordchk = EditPasswordChk.getText().toString();
                 hospital = EditHospital.getText().toString();
+                hospitalCode = EditHospitalCode.getText().toString();
                 phonenumber = EditPhoneNumber.getText().toString();
                 numberchk = EditNumberChk.getText().toString();
 
                 DBManager = new DBManager(getApplicationContext(), "MyWay", null,1); //MyWay라는 DB에 접근가능
-                db = DBManager.getWritableDatabase(); // insert문 실행할 것이므로 DB에 데이터를 쓸 수 있도록 함
+                db = DBManager.getWritableDatabase(); // insert문 실행할 것이므로 DB 데이터를 쓸 수 있도록 함
 
                 AlertDialog.Builder dlg = new AlertDialog.Builder(SignUpActivity.this); // dialog창을 띄우기 위해 선언
 
-                if (name.isEmpty() || email.isEmpty() || password.isEmpty() || passwordchk.isEmpty() || hospital.isEmpty() || phonenumber.isEmpty() || numberchk.isEmpty()){
+                if (name.isEmpty() || email.isEmpty() || password.isEmpty() || passwordchk.isEmpty() || hospital.isEmpty() || hospitalCode.isEmpty() ||phonenumber.isEmpty() || numberchk.isEmpty()){
                     dlg.setTitle("회원가입 실패");
                     dlg.setMessage("회원정보를 전부 입력하세요.");
                     dlg.setIcon(R.drawable.app_icon_my);
@@ -316,7 +366,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 if (hash != null) {
                     appCodes.add(String.format("%s", hash));
                 }
-                Log.d("TAG", String.format("이 값을 SMS 뒤에 써서 보내주면 됩니다 : %s", hash));
             }
         } catch (PackageManager.NameNotFoundException e) {
             Log.d("TAG", "Unable to find package to obtain hash. : " + e.toString());
@@ -374,7 +423,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     public void update(Observable observable, Object data) {
         String message = (String)data;
         set_module();
-        Log.d("TAG","update : massage - "+message);
 
     }
     public void set_module(){

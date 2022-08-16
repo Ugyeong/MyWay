@@ -208,6 +208,64 @@
             android:layout_gravity="center"
             tools:ignore="MissingConstraints"/>
 
+        <TextView
+            android:id="@+id/TvHospitalCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="병원 인증코드"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:paddingLeft="25dp"
+            tools:ignore="MissingConstraints" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/EditHospitalCode"
+                android:layout_width="360dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/btn_edit_corners"
+                android:hint="병원 인증코드를 입력해주세요"
+                android:paddingLeft="10dp"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/BtnHospitalCode"
+                android:layout_width="75dp"
+                android:layout_height="40dp"
+                android:layout_gravity="right|top"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="25dp"
+                android:background="@drawable/search_border"
+                android:text="임산부 인증"
+                android:textColor="#000000"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints" />
+
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/TvHospitalCodeWarning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#FF0000"
+            android:layout_marginBottom="20dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:paddingLeft="25dp"
+            tools:ignore="MissingConstraints"/>
+
+
 
         <TextView
             android:id="@+id/TvPhoneNumber"

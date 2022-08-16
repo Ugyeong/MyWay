@@ -6,7 +6,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -25,6 +27,11 @@ public class LoginActivity extends AppCompatActivity {
     String password;
     String hospital;
     String name;
+
+    //자동로그인을 위한 문자열
+    String loginId;
+    String loginPwd;
+
     DBManager DBManager;
     SQLiteDatabase db;
     Cursor cursor;
@@ -39,7 +46,14 @@ public class LoginActivity extends AppCompatActivity {
         BtnLogin = findViewById(R.id.BtnLogin);
         TvSingUp = findViewById(R.id.TvSingUp);
 
+        SharedPreferences sharedPreferences = getSharedPreferences("sharedPreferences", Activity.MODE_PRIVATE);
+        loginId = sharedPreferences.getString("inputId", null);
+        loginPwd = sharedPreferences.getString("inputPwd", null);
 
+        if(loginId != null && loginPwd != null){ // 자동로그인 성공하면 바로 MainActivity로 이동하기
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+        }
 
         BtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,9 +72,21 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else{
                    if(login(email, password)){
+
+                       SharedPreferences sharedPreferences = getSharedPreferences("sharedPreferences", Activity.MODE_PRIVATE);
+
+                       SharedPreferences.Editor autoLogin = sharedPreferences.edit();
+
+                       autoLogin.putString("inputId", email);
+                       autoLogin.putString("inputPwd", password);
+                       autoLogin.putString("name", name);
+                       autoLogin.putString("hospital", hospital);
+
+                       autoLogin.commit();
+
                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                       intent.putExtra("name",name);
-                       intent.putExtra("hospital", hospital);
+                       //intent.putExtra("name",name);
+                       //intent.putExtra("hospital", hospital);
                        startActivity(intent);
                    }
                 }

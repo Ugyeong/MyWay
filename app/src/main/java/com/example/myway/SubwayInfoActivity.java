@@ -159,15 +159,15 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
 
                     indexFirst = stringBuilder.indexOf("\"x\":\"");
                     indexLast = stringBuilder.indexOf("\",\"y\":");
-                    String x = stringBuilder.substring(indexFirst+5,indexLast);
-                    //double x = Double.parseDouble(stringBuilder.substring(indexFirst+5,indexLast));
+                    //String x = stringBuilder.substring(indexFirst+5,indexLast);
+                    double x = Double.parseDouble(stringBuilder.substring(indexFirst+5,indexLast));
 
                     indexFirst = stringBuilder.indexOf("\"y\":\"");
                     indexLast = stringBuilder.indexOf("\",\"distance\":");
                     double y = Double.parseDouble(stringBuilder.substring(indexFirst+5,indexLast));
 
-                    Toast.makeText(getApplicationContext(), x, Toast.LENGTH_SHORT).show();
-                    //setMarker(marker,x,y,R.drawable.ic_subinfo_marker,0);
+                    //Toast.makeText(getApplicationContext(), x, Toast.LENGTH_SHORT).show();
+                    setMarker(marker,x,y,R.drawable.ic_subinfo_marker,0);
 
                     bufferedReader.close();
                     conn.disconnect();
@@ -234,10 +234,18 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
                                 else if(tag.equals("stinNm")){
                                     parser.next();
                                     data.setName(parser.getText());
+                                    subname.setText("hi");
                                 }
                                 else if(tag.equals("lonmAdr")){
                                     parser.next();
                                     data.setAdr(parser.getText());
+                                }
+                                break;
+                            }
+                            else if(type==XmlPullParser.END_TAG){
+                                tag=parser.getName();
+                                if(tag.equals("item")){
+                                    break;
                                 }
                             }
                             dataArr.add(data);

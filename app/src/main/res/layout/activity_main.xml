@@ -125,10 +125,10 @@
 
         <TextView
             android:id="@+id/TvSupport"
-            android:layout_width="380dp"
+            android:layout_width="370dp"
             android:layout_height="70dp"
             android:layout_gravity="center"
-            android:background="@drawable/btn_edit_corners"
+            android:background="@drawable/btn_edit_corners_home"
             android:gravity="left|center"
             android:paddingStart="15dp"
             android:text="서울시 임산부 교통비 지원사업"
@@ -149,6 +149,19 @@
 
     </FrameLayout>
 
+    <!--<com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/windowBackground"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:backgroundTint="@color/bottom_menu"
+        app:menu="@menu/bottom_menu" />-->
+
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -163,77 +176,63 @@
 
             <ImageButton
                 android:id="@+id/home_1"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:padding="0dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/home_1"/>
+                android:src="@drawable/home_1" />
 
             <ImageButton
                 android:id="@+id/home_2"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
                 android:layout_marginRight="10dp"
                 android:padding="0dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/home_2"/>
+                android:src="@drawable/home_2" />
 
             <ImageButton
                 android:id="@+id/home_3"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
                 android:layout_marginRight="10dp"
                 android:padding="0dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/home_3"/>
+                android:src="@drawable/home_3" />
 
             <ImageButton
                 android:id="@+id/home_4"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
                 android:layout_marginRight="10dp"
                 android:padding="0dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/home_4"/>
+                android:src="@drawable/home_4" />
 
             <ImageButton
                 android:id="@+id/home_5"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
                 android:layout_marginRight="10dp"
                 android:padding="0dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/home_5"/>
+                android:src="@drawable/home_5" />
 
             <ImageButton
                 android:id="@+id/home_6"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
                 android:layout_marginRight="10dp"
                 android:padding="0dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/home_6"/>
+                android:src="@drawable/home_6" />
 
         </LinearLayout>
 
 
-
-
     </HorizontalScrollView>
-
-    <!--<com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navigationView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="parent"
-        app:backgroundTint="@color/bottom_menu"
-        app:menu="@menu/bottom_menu" />-->
 
     <com.ismaeldivita.chipnavigation.ChipNavigationBar
         android:id="@+id/ChipNavigationBar"

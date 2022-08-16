@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 //startActivity(intent);
                 //qr인증 카메라 뜸
                 qr = new IntentIntegrator(MainActivity.this);
-                qr.setOrientationLocked(false);  //세로로 스캔하기  동작 안되는 중???????
+                qr.setOrientationLocked(false);  //세로로 스캔하기
                 qr.setPrompt("임산부석 위에 부착된 QR코드를 찍어 착석을 인증해주세요");
                 qr.initiateScan();
 
@@ -200,6 +200,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
 
 
     }

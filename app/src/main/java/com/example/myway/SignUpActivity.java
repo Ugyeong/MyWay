@@ -69,6 +69,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     String hospital;
     String phonenumber;
     String numberchk;
+
     private String compare_hash;
 
 

@@ -3,8 +3,10 @@ package com.example.myway;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -59,10 +61,49 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+        btn_logout_set.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                AlertDialog.Builder dlg = new AlertDialog.Builder(SettingsActivity.this);
+                dlg.setTitle("로그아웃");
+                dlg.setMessage("로그아웃 하시겠습니까?");
+                dlg.setIcon(R.drawable.app_icon_my);
+
+                dlg.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(intent);
+
+                        SharedPreferences sharedPreferences = getSharedPreferences("sharedPreferences", Activity.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.clear(); //저장되어 있는 값들을 지운다
+                        editor.commit();
+
+                        finish();
+                    }
+                });
+                dlg.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) { // 취소버튼 누르면 아무것도 동작시키지 않음
+
+                    }
+                });
+
+               dlg.show();
+
+            }
+        });
+
         //인텐트 전달받기
-        Intent intent = getIntent();
-        name = intent.getStringExtra("name");
-        hospital = intent.getStringExtra("hospital");
+        //Intent intent = getIntent();
+        //name = intent.getStringExtra("name");
+        //hospital = intent.getStringExtra("hospital");
+
+        SharedPreferences sharedPreferences = getSharedPreferences("sharedPreferences", Activity.MODE_PRIVATE);
+        name = sharedPreferences.getString("name", null);
+        hospital = sharedPreferences.getString("hospital",null);
 
         ChipNavigationBar = findViewById(R.id.ChipNavigationBar);
 

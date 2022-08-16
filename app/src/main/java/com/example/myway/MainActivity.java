@@ -57,6 +57,15 @@ public class MainActivity extends AppCompatActivity{
 
     AlertDialog.Builder builder;
 
+    //임산부 지원 사업 카드뉴스 이미지 버튼
+    ImageButton home_1;
+    ImageButton home_2;
+    ImageButton home_3;
+    ImageButton home_4;
+    ImageButton home_5;
+    ImageButton home_6;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +81,13 @@ public class MainActivity extends AppCompatActivity{
         completedSeatnum = findViewById(R.id.completedSeatnum);
 
         ChipNavigationBar.setItemSelected(R.id.home,true);
+
+        home_1 = findViewById(R.id.home_1);
+        home_2 = findViewById(R.id.home_2);
+        home_3 = findViewById(R.id.home_3);
+        home_4 = findViewById(R.id.home_4);
+        home_5 = findViewById(R.id.home_5);
+        home_6 = findViewById(R.id. home_6);
 
         //바텀시트 설정
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -167,6 +183,60 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.seoulmomcare.com/main/main.do")); // 서울시 임산부 교통비 지원사업 홈페이지로 이동
+                startActivity(intent);
+
+            }
+        });
+
+        home_1.setOnClickListener(new View.OnClickListener() { //임산부 건강 챙기기 카드뉴스 보여주기
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.easylaw.go.kr/CSP/EasyLawInfoR.laf?csmSeq=735&easySeq=2204&search_put=%EC%9E%84%EC%82%B0%EB%B6%80"));
+                startActivity(intent);
+
+            }
+        });
+
+        home_2.setOnClickListener(new View.OnClickListener() { //임산부 진료비 지원받기 카드뉴스 보여주기
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.easylaw.go.kr/CSP/EasyLawInfoR.laf?csmSeq=735&easySeq=2205&search_put=%EC%9E%84%EC%82%B0%EB%B6%80"));
+                startActivity(intent);
+
+            }
+        });
+
+        home_3.setOnClickListener(new View.OnClickListener() { //산모, 신생아 건강 관리사 지원 카드뉴스 보여주기
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.easylaw.go.kr/CSP/EasyLawInfoR.laf?csmSeq=735&easySeq=2207&search_put=%EC%9E%84%EC%82%B0%EB%B6%80"));
+                startActivity(intent);
+
+            }
+        });
+
+        home_4.setOnClickListener(new View.OnClickListener() { //출산비 등 지원받기 카드뉴스 보여주기
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.easylaw.go.kr/CSP/EasyLawInfoR.laf?csmSeq=735&easySeq=2206&search_put=%EC%9E%84%EC%82%B0%EB%B6%80"));
+                startActivity(intent);
+
+            }
+        });
+
+        home_5.setOnClickListener(new View.OnClickListener() { // 임산부 산전검사 및 난임지원 카드뉴스 보여주기
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.easylaw.go.kr/CSP/EasyLawInfoR.laf?csmSeq=735&easySeq=2203&search_put=%EC%9E%84%EC%82%B0%EB%B6%80"));
+                startActivity(intent);
+
+            }
+        });
+
+        home_6.setOnClickListener(new View.OnClickListener() { //임산기간 근로시간 단축제도 및 출산전후휴가 카드뉴스 보여주기
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.easylaw.go.kr/CSP/EasyLawInfoR.laf?csmSeq=735&easySeq=2208&search_put=%EC%9E%84%EC%82%B0%EB%B6%80"));
                 startActivity(intent);
 
             }

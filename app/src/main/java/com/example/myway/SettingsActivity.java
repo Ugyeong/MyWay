@@ -61,6 +61,14 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+        btn_help_set.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { // 도움말 액티비티로 전환하기
+                Intent intent = new Intent(getApplicationContext(), HelpActivity.class);
+                startActivity(intent);
+            }
+        });
+
         btn_logout_set.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

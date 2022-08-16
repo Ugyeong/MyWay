@@ -1,9 +1,11 @@
 package com.example.myway;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,7 +18,9 @@ import android.widget.Toast;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.google.zxing.qrcode.encoder.QRCode;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
+import com.journeyapps.barcodescanner.CaptureActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
     ImageButton btnOk;
     ImageButton btnCancel;
     TextView completedSeatnum;
+
+    AlertDialog.Builder builder;
 
 
     @Override
@@ -100,9 +106,10 @@ public class MainActivity extends AppCompatActivity {
                 //startActivity(intent);
                 //qr인증 카메라 뜸
                 qr = new IntentIntegrator(MainActivity.this);
-                qr.setOrientationLocked(false);  //세로로 스캔하기  동작 안되는 중???????
+                qr.setOrientationLocked(false);  //세로로 스캔하기
                 qr.setPrompt("임산부석 위에 부착된 QR코드를 찍어 착석을 인증해주세요");
                 qr.initiateScan();
+
             }
         });
 
@@ -110,10 +117,33 @@ public class MainActivity extends AppCompatActivity {
         CompletedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CompletedBtn.setVisibility(View.GONE);  //착석 취소버튼 안보이도록 수정
-                completedSeatnum.setText("");  //좌석 번호 반환됨
-                completedSeatnum.setVisibility(View.INVISIBLE);
-                QRBtn.setVisibility(View.VISIBLE);
+
+                //정말로 착석 취소할지 물어보도록
+                builder = new AlertDialog.Builder(MainActivity.this);
+
+                builder.setTitle("착석 취소").setMessage("OK버튼을 누르면 착석이 취소됩니다.");
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int id)
+                    {
+                        Toast.makeText(getApplicationContext(), "착석 취소됨", Toast.LENGTH_SHORT).show();
+                        CompletedBtn.setVisibility(View.GONE);  //착석 취소버튼 안보이도록 수정
+                        completedSeatnum.setText("");  //좌석 번호 반환됨
+                        completedSeatnum.setVisibility(View.INVISIBLE);
+                        QRBtn.setVisibility(View.VISIBLE);
+                    }
+                });
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int id)
+                    {
+                        Toast.makeText(getApplicationContext(), "착석 유지됨", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
             }
         });
 
@@ -170,6 +200,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
 
 
     }

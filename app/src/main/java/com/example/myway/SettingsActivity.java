@@ -51,17 +51,9 @@ public class SettingsActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int id)
                     {
-                        Toast.makeText(getApplicationContext(), "OK Click", Toast.LENGTH_SHORT).show();
                     }
                 });
 
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
-                    @Override
-                    public void onClick(DialogInterface dialog, int id)
-                    {
-                        Toast.makeText(getApplicationContext(), "Cancel Click", Toast.LENGTH_SHORT).show();
-                    }
-                });
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
             }

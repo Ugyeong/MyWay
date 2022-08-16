@@ -86,6 +86,10 @@
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="13tfim55ik" />
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="fullSensor"
+            tools:replace="screenOrientation"/>
     </application>
 
 </manifest>

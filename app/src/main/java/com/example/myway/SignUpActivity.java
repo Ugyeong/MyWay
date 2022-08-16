@@ -175,15 +175,30 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
        BtnPhoneNumber.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               checkPermission();
 
-               SmsManager sms = SmsManager.getDefault();
-               String phoneNumber = EditPhoneNumber.getText().toString();
-               String key_hash = getAppSignatures(getApplicationContext());
-               String message ="<#> MyWay 앱의 인증번호는 다음과 같습니다.\n"+key_hash;
-               sms.sendTextMessage(phoneNumber, null, message, null, null);
-               compare_hash = key_hash;
-               EditNumberChk.setText(compare_hash);
+               phonenumber = EditPhoneNumber.getText().toString();
+
+               if(!(phonenumber.length() ==11)){ //휴대전화 번호가 잘못 입력된 형태일 때
+                   AlertDialog.Builder dlg = new AlertDialog.Builder(SignUpActivity.this); // dialog창을 띄우기 위해 선언
+                   dlg.setTitle("인증번호 수신 실패");
+                   dlg.setMessage("휴대폰 번호를 다시 입력하세요");
+                   dlg.setIcon(R.drawable.app_icon_my);
+                   dlg.setPositiveButton("확인", null);
+                   dlg.show();
+                   EditPhoneNumber.setText("");
+               }
+               else{ // 휴대폰 번호를 정상적으로 입력했을 때
+                   checkPermission();
+                   SmsManager sms = SmsManager.getDefault();
+                   String phoneNumber = EditPhoneNumber.getText().toString();
+                   String key_hash = getAppSignatures(getApplicationContext());
+                   String message ="<#> MyWay 앱의 인증번호는 다음과 같습니다.\n"+key_hash;
+                   sms.sendTextMessage(phoneNumber, null, message, null, null);
+                   compare_hash = key_hash;
+                   EditNumberChk.setText(compare_hash);
+
+               }
+
            }
 
        });
@@ -299,7 +314,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                     TvEmailWarning.setText("이메일 형식에 맞지 않습니다"); //textView에 출력하기
                 }
                 else{
-
                     TvEmailWarning.setText("");
                 }
 

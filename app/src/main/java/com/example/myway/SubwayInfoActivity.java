@@ -20,8 +20,11 @@ import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -29,10 +32,6 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
     private MapView mapView;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
     private FusedLocationSource locationSource;
-
-    String key="$2a$10$IMtzc.n1u/g.L0xL28M/ueJt10zkC4ZDIhrwz8xLLBKl709PHJilq";
-    String stationApiURL="https://openapi.kric.go.kr/openapi/convenientInfo/stationInfo?serviceKey=";
-    String result = stationApiURL + key+ "&format=xml&railOprIsttCd=S5&lnCd=5";
 
     ImageView submap;
     ImageView refresh;
@@ -51,19 +50,6 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
         mapView.getMapAsync(this);
         locationSource = new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
 
-        try {
-            URL url = new URL(result);
-            XmlPullParserFactory parserCreator = XmlPullParserFactory.newInstance();
-            XmlPullParser parser = parserCreator.newPullParser();
-
-            parser.setInput(url.openStream(), null);
-
-            int parserEvent = parser.getEventType();
-        } catch (MalformedURLException | XmlPullParserException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         //지하철 노선도 액티비티로 이동
         submap.setOnClickListener(new View.OnClickListener() {
@@ -118,6 +104,122 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
 
             }
         });
+
+        //API 마커 추가
+        SubApiData apiData = new SubApiData();
+        ArrayList<SubData> dataArr = apiData.getData();
+
+        for(SubData data : dataArr){
+
+        }
+
+
+
+    }
+
+    public class SubData{
+        String name;
+        String adr;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getAdr() {
+            return adr;
+        }
+
+        public void setAdr(String adr) {
+            this.adr = adr;
+        }
+
+        @Override
+        public String toString() {
+            return "SubData{" +
+                    "name='" + name + '\'' +
+                    ", adr='" + adr + '\'' +
+                    '}';
+        }
+
+    }
+
+    public class SubApiData{
+        String key="$2a$10$IMtzc.n1u/g.L0xL28M/ueJt10zkC4ZDIhrwz8xLLBKl709PHJilq";
+        String stationApiURL="https://openapi.kric.go.kr/openapi/convenientInfo/stationInfo?serviceKey=";
+        String result = stationApiURL + key+ "&format=xml&railOprIsttCd=S5&lnCd=5";
+
+        public ArrayList<SubData> getData(){
+            ArrayList<SubData> dataArr = new ArrayList<SubData>();
+            Thread t = new Thread(){
+                @Override
+                public void run(){
+                    try{
+                        URL url = new URL(result);
+                        InputStream is = url.openStream();
+
+                        XmlPullParserFactory xmlFactory = XmlPullParserFactory.newInstance();
+                        XmlPullParser parser = xmlFactory.newPullParser();
+                        parser.setInput(is,"utf-8");
+
+                        boolean sName=false, sAdr=false;
+                        String name="", adr="";
+
+                        //파싱
+                        while(parser.getEventType() != XmlPullParser.END_DOCUMENT){
+                            int type = parser.getEventType();
+                            SubData data = new SubData();
+
+                            if(type==XmlPullParser.START_TAG){
+                                if(parser.getName().equals("item")){
+                                    if(parser.getAttributeValue(0).equals("stinNm")){
+                                        sName = true;
+                                    }else if(parser.getAttributeValue(0).equals("lonmAdr")){
+                                        sAdr = true;
+                                    }
+                                }
+                            }
+
+                            else if(type==XmlPullParser.TEXT){
+                                if(sName){
+                                    name = parser.getText();
+                                    sName = false;
+                                }else if(sAdr){
+                                    adr = parser.getText();
+                                    sAdr = false;
+                                }
+                            }
+
+                            else if (type==XmlPullParser.END_TAG && parser.getName().equals("item")){
+                                data.setName(name);
+                                data.setAdr(adr);
+
+                                dataArr.add(data);
+                            }
+                            type = parser.next();
+                        }
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (XmlPullParserException e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+            try{
+                t.start();
+                t.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            return dataArr;
+        }
+
     }
 
     //지도 설정

@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 import com.naver.maps.geometry.LatLng;
@@ -29,12 +28,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -43,6 +42,9 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
     private static NaverMap naverMap;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
     private FusedLocationSource locationSource;
+
+    private Marker marker1 = new Marker();
+    private Marker marker2 = new Marker();
 
     String geoquery;
     Marker marker = new Marker();
@@ -125,59 +127,68 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
         //API 마커 추가
         SubApiData apiData = new SubApiData();
         ArrayList<SubData> dataArr = apiData.getData();
+        setMarker(marker1,37.492802188149824,127.15120888264323,R.drawable.ic_subinfo_marker,0);
+        //setMarker(marker2,37.49436460973492,127.15531687350739,R.drawable.ic_subinfo_marker,0);
 
-        BufferedReader bufferedReader;
-        StringBuilder stringBuilder = new StringBuilder();
+        /*
+        new Thread(()->{
+            BufferedReader bufferedReader;
+            StringBuilder stringBuilder = new StringBuilder();
 
-        for(SubData data : dataArr){
-            try {
-                geoquery = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=" + URLEncoder.encode(data.getAdr(),"UTF-8");
-                URL geourl = new URL(geoquery);
-                HttpURLConnection conn = (HttpURLConnection) geourl.openConnection();
-                if(conn!=null){
-                    conn.setConnectTimeout(5000);
-                    conn.setReadTimeout(5000);
-                    conn.setRequestMethod("GET");
-                    conn.setRequestProperty("X-NCP-APIGW-API-KEY-ID\t","13tfim55ik");
-                    conn.setRequestProperty("X-NCP-APIGW-API-KEY","x0xNEmBmdoSN0iO4HLywQuoH2WNydnzZOxVhUG6Y");
-                    conn.setDoInput(true);
+            for(SubData data : dataArr){
+                try {
+                    geoquery = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=" + URLEncoder.encode(data.getAdr(),"UTF-8");
+                    URL geourl = new URL(geoquery);
+                    HttpURLConnection conn = (HttpURLConnection) geourl.openConnection();
+                    if(conn!=null){
+                        conn.setConnectTimeout(5000);
+                        conn.setReadTimeout(5000);
+                        conn.setRequestMethod("GET");
+                        conn.setRequestProperty("X-NCP-APIGW-API-KEY-ID","13tfim55ik");
+                        conn.setRequestProperty("X-NCP-APIGW-API-KEY","x0xNEmBmdoSN0iO4HLywQuoH2WNydnzZOxVhUG6Y");
+                        conn.setDoInput(true);
 
-                    int responseCode = conn.getResponseCode();
-                    if(responseCode ==200){
-                        bufferedReader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                    }else{
-                        bufferedReader = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+                        int responseCode = conn.getResponseCode();
+                        if(responseCode ==200){
+                            bufferedReader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                        }else{
+                            bufferedReader = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+                        }
+
+                        String line = null;
+                        while((line = bufferedReader.readLine())!=null){
+                            stringBuilder.append(line+"\n");
+                        }
+
+                        int indexFirst;
+                        int indexLast;
+
+                        indexFirst = stringBuilder.indexOf("\"x\":\"");
+                        indexLast = stringBuilder.indexOf("\",\"y\":");
+                        String x = stringBuilder.substring(indexFirst+5,indexLast);
+                        //double x = Double.parseDouble(stringBuilder.substring(indexFirst+5,indexLast));
+
+                        indexFirst = stringBuilder.indexOf("\"y\":\"");
+                        indexLast = stringBuilder.indexOf("\",\"distance\":");
+                        double y = Double.parseDouble(stringBuilder.substring(indexFirst+5,indexLast));
+
+                        //setMarker(marker,x,y,R.drawable.ic_subinfo_marker,0);
+
+                        bufferedReader.close();
+                        conn.disconnect();
                     }
-
-                    String line = null;
-                    while((line = bufferedReader.readLine())!=null){
-                        stringBuilder.append(line+"\n");
-                    }
-
-                    int indexFirst;
-                    int indexLast;
-
-                    indexFirst = stringBuilder.indexOf("\"x\":\"");
-                    indexLast = stringBuilder.indexOf("\",\"y\":");
-                    //String x = stringBuilder.substring(indexFirst+5,indexLast);
-                    double x = Double.parseDouble(stringBuilder.substring(indexFirst+5,indexLast));
-
-                    indexFirst = stringBuilder.indexOf("\"y\":\"");
-                    indexLast = stringBuilder.indexOf("\",\"distance\":");
-                    double y = Double.parseDouble(stringBuilder.substring(indexFirst+5,indexLast));
-
-                    //Toast.makeText(getApplicationContext(), x, Toast.LENGTH_SHORT).show();
-                    setMarker(marker,x,y,R.drawable.ic_subinfo_marker,0);
-
-                    bufferedReader.close();
-                    conn.disconnect();
+                } catch (UnsupportedEncodingException | MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            } catch (UnsupportedEncodingException | MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
+
             }
-        }
+
+        }).start();
+
+
+         */
     }
 
     public class SubData{
@@ -199,7 +210,6 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
         public void setAdr(String adr) {
             this.adr = adr;
         }
-
     }
 
     public class SubApiData{
@@ -220,35 +230,39 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
                         XmlPullParser parser = xmlFactory.newPullParser();
                         parser.setInput(new InputStreamReader(is, "UTF-8"));
 
-                        String name="", adr="";
-                        String tag="";
+                        String tagName="";
+                        String name="",adr="";
 
                         //파싱
-                        parser.next();
-                        int type = parser.getEventType();
-                        while(type != XmlPullParser.END_DOCUMENT){
-                            SubData data = new SubData();
-                            if(type==XmlPullParser.START_TAG){
-                                tag=parser.getName();
-                                if(tag.equals("item"));
-                                else if(tag.equals("stinNm")){
-                                    parser.next();
-                                    data.setName(parser.getText());
-                                    subname.setText("hi");
-                                }
-                                else if(tag.equals("lonmAdr")){
-                                    parser.next();
-                                    data.setAdr(parser.getText());
-                                }
-                                break;
-                            }
-                            else if(type==XmlPullParser.END_TAG){
-                                tag=parser.getName();
-                                if(tag.equals("item")){
+                        int eventType = parser.getEventType();
+                        SubData data = new SubData();
+                        while(eventType != XmlPullParser.END_DOCUMENT){
+                            switch(eventType) {
+                                case XmlPullParser.START_TAG:
+                                    tagName = parser.getName();
+                                    if (parser.getName().equals("item")) {
+
+                                    }
+                                case XmlPullParser.END_TAG:
+                                    if (parser.getName().equals("item")) {
+                                        dataArr.add(data);
+                                    }
                                     break;
-                                }
+                                case XmlPullParser.TEXT:
+                                    switch (tagName) {
+                                        case "stinNm": {
+                                            name = parser.getText();
+                                            data.setName(name);
+                                            break;
+                                        }
+                                        case "lonmAdr": {
+                                            adr = parser.getText();
+                                            data.setAdr(adr);
+                                            break;
+                                        }
+                                    }
                             }
-                            dataArr.add(data);
+                            eventType = parser.next();
                         }
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
@@ -303,6 +317,7 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
 
     @Override
     public void onMapReady(@NonNull NaverMap naverMap) {
+        this.naverMap = naverMap;
         naverMap.setLocationSource(locationSource);
         naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
     }

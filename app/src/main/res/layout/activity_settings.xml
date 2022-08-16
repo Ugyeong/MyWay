@@ -88,14 +88,6 @@
         android:layout_marginTop="75dp"
         app:srcCompat="@drawable/pregnant_character_set" />
 
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="330dp"
-        android:layout_marginTop="130dp"
-        android:padding="2dp"
-        app:srcCompat="@drawable/dot_setting" />
 
     <com.ismaeldivita.chipnavigation.ChipNavigationBar
         android:id="@+id/ChipNavigationBar"

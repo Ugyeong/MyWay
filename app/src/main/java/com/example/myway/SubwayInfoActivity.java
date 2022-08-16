@@ -131,8 +131,7 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
 
         for(SubData data : dataArr){
             try {
-                geoquery = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query="
-                        + URLEncoder.encode(data.getAdr(),"UTF-8");
+                geoquery = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=" + URLEncoder.encode(data.getAdr(),"UTF-8");
                 URL geourl = new URL(geoquery);
                 HttpURLConnection conn = (HttpURLConnection) geourl.openConnection();
                 if(conn!=null){
@@ -221,43 +220,27 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
                         XmlPullParser parser = xmlFactory.newPullParser();
                         parser.setInput(new InputStreamReader(is, "UTF-8"));
 
-                        boolean sName=false, sAdr=false;
                         String name="", adr="";
+                        String tag="";
 
                         //파싱
+                        parser.next();
                         int type = parser.getEventType();
                         while(type != XmlPullParser.END_DOCUMENT){
                             SubData data = new SubData();
-
                             if(type==XmlPullParser.START_TAG){
-                                if(parser.getName().equals("item")){
-                                    subname.setText(parser.getAttributeValue(0));
-                                    if(parser.getAttributeValue(0).equals("stinNm")){
-                                        sName = true;
-                                    }else if(parser.getAttributeValue(0).equals("lonmAdr")){
-                                        sAdr = true;
-                                    }
+                                tag=parser.getName();
+                                if(tag.equals("item"));
+                                else if(tag.equals("stinNm")){
+                                    parser.next();
+                                    data.setName(parser.getText());
+                                }
+                                else if(tag.equals("lonmAdr")){
+                                    parser.next();
+                                    data.setAdr(parser.getText());
                                 }
                             }
-
-                            else if(type==XmlPullParser.TEXT){
-                                if(sName){
-                                    name = parser.getText();
-                                    sName = false;
-                                }else if(sAdr){
-                                    adr = parser.getText();
-                                    sAdr = false;
-                                }
-                            }
-
-                            else if (type==XmlPullParser.END_TAG && parser.getName().equals("item")){
-                                data.setName(name);
-                                data.setAdr(adr);
-
-                                subname.setText(adr);
-                                dataArr.add(data);
-                            }
-                            type = parser.next();
+                            dataArr.add(data);
                         }
                     } catch (MalformedURLException e) {
                         e.printStackTrace();

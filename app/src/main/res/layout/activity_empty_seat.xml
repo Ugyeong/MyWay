@@ -486,7 +486,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginTop="20dp"
-        android:text="3분"
+        android:text="8분"
         app:layout_constraintStart_toEndOf="@+id/textView21"
         app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
@@ -702,7 +702,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginTop="18dp"
-        android:text="4분"
+        android:text="11분"
         app:layout_constraintStart_toEndOf="@+id/textView55"
         app:layout_constraintTop_toBottomOf="@+id/textView113" />
 
@@ -712,7 +712,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
         android:layout_marginTop="16dp"
-        android:text="11분"
+        android:text="4분"
         app:layout_constraintStart_toEndOf="@+id/textView35"
         app:layout_constraintTop_toBottomOf="@+id/textView34" />
 

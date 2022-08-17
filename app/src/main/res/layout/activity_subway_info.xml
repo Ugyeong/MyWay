@@ -142,9 +142,8 @@
                     android:id="@+id/subinfo_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
                     android:layout_weight="1"
-                    android:text="오전 2:11 기준" />
+                    android:gravity="right" />
 
                 <ImageView
                     android:id="@+id/subinfo_refresh"
@@ -175,31 +174,32 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/subinfo_dir1"
-                        android:layout_gravity="center"
-                        android:layout_width="120dp"
+                        android:id="@+id/subinfo_TextdestUp"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_marginTop="15dp"
                         android:text="석계 방향"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                     <LinearLayout
-                        android:layout_gravity="center"
-                        android:layout_width="120dp"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_marginTop="10dp"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/subinfo_set1"
-                            android:layout_gravity="left"
-                            android:layout_weight="1"
+                            android:id="@+id/subinfo_destUp1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="응암순환"/>
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="응암순환"
+                            app:autoSizeTextType="uniform" />
 
                         <TextView
-                            android:id="@+id/subinfo_set1_time"
+                            android:id="@+id/subinfo_upTextview1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
@@ -207,35 +207,38 @@
                             android:gravity="right"
                             android:text="3분"
                             android:textColor="#407BFF"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold"
+                            app:autoSizeTextType="uniform" />
 
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_gravity="center"
-                        android:layout_width="120dp"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_marginTop="5dp"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/subinfo_set2"
-                            android:layout_gravity="left"
-                            android:layout_weight="1"
+                            android:id="@+id/subinfo_destUp2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="응암순환"/>
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="응암순환"
+                            app:autoSizeTextType="uniform" />
 
                         <TextView
-                            android:id="@+id/subinfo_set2_time"
+                            android:id="@+id/subinfo_upTextview2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="right"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="11분"
                             android:textColor="#407BFF"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold"
+                            app:autoSizeTextType="uniform" />
 
                     </LinearLayout>
 
@@ -252,67 +255,71 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/subinfo_dir2"
-                        android:layout_gravity="center"
-                        android:layout_width="120dp"
+                        android:id="@+id/subinfo_TextdestDn"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_marginTop="15dp"
                         android:text="화랑대 방향"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                     <LinearLayout
-                        android:layout_gravity="center"
-                        android:layout_width="120dp"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_marginTop="10dp"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/subinfo_set3"
-                            android:layout_gravity="left"
-                            android:layout_weight="1"
+                            android:id="@+id/subinfo_destDn1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="봉화산"/>
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="봉화산"
+                            app:autoSizeTextType="uniform" />
 
                         <TextView
-                            android:id="@+id/subinfo_set3_time"
+                            android:id="@+id/subinfo_dnTextview1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="right"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="4분"
                             android:textColor="#407BFF"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold"
+                            app:autoSizeTextType="uniform" />
 
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_gravity="center"
-                        android:layout_width="120dp"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_marginTop="5dp"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/subinfo_set4"
-                            android:layout_gravity="left"
-                            android:layout_weight="1"
+                            android:id="@+id/subinfo_destDn2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="신내"/>
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:text="신내"
+                            app:autoSizeTextType="uniform" />
 
                         <TextView
-                            android:id="@+id/subinfo_set4_time"
+                            android:id="@+id/subinfo_dnTextview2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="right"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="12분"
+                            android:text="도착 정보 없음"
                             android:textColor="#407BFF"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold"
+                            app:autoSizeTextType="uniform" />
 
                     </LinearLayout>
 

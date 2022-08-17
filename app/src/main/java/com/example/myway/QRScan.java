@@ -127,10 +127,10 @@ public class QRScan extends AppCompatActivity{
         if (result != null) {
             //qrcode 가 없으면
             if (result.getContents() == null) {
-                Toast.makeText(QRScan.this, "취소!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(QRScan.this, "취소!", Toast.LENGTH_SHORT).show();
             } else {
                 //qrcode 결과가 있으면
-                Toast.makeText(QRScan.this, "스캔완료!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(QRScan.this, "스캔완료!", Toast.LENGTH_SHORT).show();
                 try {
                     //data를 json으로 변환
                     JSONObject obj = new JSONObject(result.getContents());

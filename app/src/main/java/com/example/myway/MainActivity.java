@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity{
                     @Override
                     public void onClick(DialogInterface dialog, int id)
                     {
-                        Toast.makeText(getApplicationContext(), "착석 취소됨", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), "착석 취소됨", Toast.LENGTH_SHORT).show();
                         CompletedBtn.setVisibility(View.GONE);  //착석 취소버튼 안보이도록 수정
                         completedSeatnum.setText("");  //좌석 번호 반환됨
                         completedSeatnum.setVisibility(View.INVISIBLE);
@@ -155,9 +155,10 @@ public class MainActivity extends AppCompatActivity{
                     @Override
                     public void onClick(DialogInterface dialog, int id)
                     {
-                        Toast.makeText(getApplicationContext(), "착석 유지됨", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), "착석 유지됨", Toast.LENGTH_SHORT).show();
                     }
                 });
+                builder.setIcon(R.drawable.app_icon_my);
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
             }
@@ -284,10 +285,10 @@ public class MainActivity extends AppCompatActivity{
         if (result != null) {
             //qrcode 가 없으면
             if (result.getContents() == null) {
-                Toast.makeText(MainActivity.this, "잘못된 QR코드입니다.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "잘못된 QR코드입니다.", Toast.LENGTH_SHORT).show();
             } else {
                 //qrcode 결과가 있으면
-                Toast.makeText(MainActivity.this, "스캔완료!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "스캔완료!", Toast.LENGTH_SHORT).show();
                 //일시 받아오기
                 seatDate = view.findViewById(R.id.seatDate);
                 mNow = System.currentTimeMillis();
@@ -297,7 +298,7 @@ public class MainActivity extends AppCompatActivity{
                     //data를 json으로 변환
                     JSONObject obj = new JSONObject(result.getContents());
                     seatnum=obj.getString("seatNum");  //QR코드에서 좌석 번호 얻어오기
-                    seatNum.setText(seatnum);
+                    seatNum.setText(seatnum+" 좌석");
                     bottomSheetDialog.show();
                 } catch (JSONException e) {
                     e.printStackTrace();

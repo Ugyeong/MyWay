@@ -55,9 +55,6 @@
             android:name=".LoginActivity"
             android:exported="true"></activity>
         <activity
-            android:name=".QRScan"
-            android:exported="false" />
-        <activity
             android:name=".SubwayInfoActivity"
             android:exported="false" />
         <activity

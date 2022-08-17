@@ -118,8 +118,6 @@ public class MainActivity extends AppCompatActivity{
         QRBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent(getApplicationContext(), QRScan.class);
-                //startActivity(intent);
                 //qr인증 카메라 뜸
                 qr = new IntentIntegrator(MainActivity.this);
                 qr.setOrientationLocked(false);  //세로로 스캔하기
@@ -143,7 +141,6 @@ public class MainActivity extends AppCompatActivity{
                     @Override
                     public void onClick(DialogInterface dialog, int id)
                     {
-                        //Toast.makeText(getApplicationContext(), "착석 취소됨", Toast.LENGTH_SHORT).show();
                         CompletedBtn.setVisibility(View.GONE);  //착석 취소버튼 안보이도록 수정
                         completedSeatnum.setText("");  //좌석 번호 반환됨
                         completedSeatnum.setVisibility(View.INVISIBLE);
@@ -155,7 +152,6 @@ public class MainActivity extends AppCompatActivity{
                     @Override
                     public void onClick(DialogInterface dialog, int id)
                     {
-                        //Toast.makeText(getApplicationContext(), "착석 유지됨", Toast.LENGTH_SHORT).show();
                     }
                 });
                 builder.setIcon(R.drawable.app_icon_my);
@@ -285,10 +281,8 @@ public class MainActivity extends AppCompatActivity{
         if (result != null) {
             //qrcode 가 없으면
             if (result.getContents() == null) {
-                //Toast.makeText(MainActivity.this, "잘못된 QR코드입니다.", Toast.LENGTH_SHORT).show();
             } else {
                 //qrcode 결과가 있으면
-                //Toast.makeText(MainActivity.this, "스캔완료!", Toast.LENGTH_SHORT).show();
                 //일시 받아오기
                 seatDate = view.findViewById(R.id.seatDate);
                 mNow = System.currentTimeMillis();
@@ -302,8 +296,6 @@ public class MainActivity extends AppCompatActivity{
                     bottomSheetDialog.show();
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    //Toast.makeText(MainActivity.this, result.getContents(), Toast.LENGTH_LONG).show();
-                    //textViewResult.setText(result.getContents());
                 }
             }
 

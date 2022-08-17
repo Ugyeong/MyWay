@@ -235,7 +235,7 @@
                             android:layout_gravity="right"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:text="11분"
+                            android:text="도착 정보 없음"
                             android:textColor="#407BFF"
                             android:textStyle="bold"
                             app:autoSizeTextType="uniform" />

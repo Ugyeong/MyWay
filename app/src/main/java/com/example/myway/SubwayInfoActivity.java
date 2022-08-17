@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 import com.naver.maps.geometry.LatLng;
@@ -43,11 +44,7 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
     private FusedLocationSource locationSource;
 
-    private Marker marker1 = new Marker();
-    private Marker marker2 = new Marker();
-
     String geoquery;
-    Marker marker = new Marker();
     ImageView submap;
     ImageView refresh;
 
@@ -124,13 +121,11 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
             }
         });
 
-        //API 마커 추가
         SubApiData apiData = new SubApiData();
         ArrayList<SubData> dataArr = apiData.getData();
-        setMarker(marker1,37.492802188149824,127.15120888264323,R.drawable.ic_subinfo_marker,0);
-        //setMarker(marker2,37.49436460973492,127.15531687350739,R.drawable.ic_subinfo_marker,0);
+        ArrayList<SubXYData> xydataArr = new ArrayList<SubXYData>();
 
-        /*
+
         new Thread(()->{
             BufferedReader bufferedReader;
             StringBuilder stringBuilder = new StringBuilder();
@@ -165,14 +160,13 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
 
                         indexFirst = stringBuilder.indexOf("\"x\":\"");
                         indexLast = stringBuilder.indexOf("\",\"y\":");
-                        String x = stringBuilder.substring(indexFirst+5,indexLast);
-                        //double x = Double.parseDouble(stringBuilder.substring(indexFirst+5,indexLast));
+                        double x = Double.parseDouble(stringBuilder.substring(indexFirst+5,indexLast));
 
                         indexFirst = stringBuilder.indexOf("\"y\":\"");
                         indexLast = stringBuilder.indexOf("\",\"distance\":");
                         double y = Double.parseDouble(stringBuilder.substring(indexFirst+5,indexLast));
 
-                        //setMarker(marker,x,y,R.drawable.ic_subinfo_marker,0);
+                        xydataArr.add(new SubXYData(data.getName(),x,y));
 
                         bufferedReader.close();
                         conn.disconnect();
@@ -186,9 +180,42 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
             }
 
         }).start();
+    }
 
+    public class SubXYData{
+        String name;
+        double x;
+        double y;
 
-         */
+        public SubXYData(String name, double x, double y) {
+            this.name = name;
+            this.x = x;
+            this.y = y;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public double getX() {
+            return x;
+        }
+
+        public void setX(double x) {
+            this.x = x;
+        }
+
+        public double getY() {
+            return y;
+        }
+
+        public void setY(double y) {
+            this.y = y;
+        }
     }
 
     public class SubData{
@@ -212,6 +239,7 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
         }
     }
 
+    //지하철역 API 받아오기
     public class SubApiData{
         String key="$2a$10$IMtzc.n1u/g.L0xL28M/ueJt10zkC4ZDIhrwz8xLLBKl709PHJilq";
         String stationApiURL="https://openapi.kric.go.kr/openapi/convenientInfo/stationInfo?serviceKey=";
@@ -286,23 +314,6 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
 
     }
 
-    //마커 설정
-    private void setMarker(Marker marker, double lat, double lng, int resourceID, int zIndex)
-    {
-        //원근감 표시
-        marker.setIconPerspectiveEnabled(true);
-        //아이콘 지정
-        marker.setIcon(OverlayImage.fromResource(resourceID));
-        //마커의 투명도
-        marker.setAlpha(0.8f);
-        //마커 위치
-        marker.setPosition(new LatLng(lat, lng));
-        //마커 우선순위
-        marker.setZIndex(zIndex);
-        //마커 표시
-        marker.setMap(naverMap);
-    }
-    
     //지도 설정
     @Override
     public void onRequestPermissionsResult(int requestCode,

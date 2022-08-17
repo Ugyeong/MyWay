@@ -3,6 +3,30 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/drawable/bottom_bar.xml" value="0.171" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/drawable/btn_corners.xml" value="0.132" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/drawable/btn_edit_corners.xml" value="0.171" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.133" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/drawable/ic_escalator.xml" value="0.133" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/drawable/search_border.xml" value="0.322" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/drawable/shape_blue.xml" value="0.1" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/drawable/shape_gray.xml" value="0.133" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/drawable/shape_setting.xml" value="0.173" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/layout/activity_empty_seat.xml" value="0.25" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/layout/activity_facilities.xml" value="0.33" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/layout/activity_home.xml" value="0.19972826086956522" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/layout/activity_qrscan.xml" value="0.25" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/layout/activity_settings.xml" value="0.25" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/layout/activity_sign_up.xml" value="0.22" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/layout/activity_sign_up_success.xml" value="0.22" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/layout/activity_splash.xml" value="0.2884963768115942" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/layout/activity_subway_info.xml" value="0.33" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/layout/activity_subway_map.xml" value="0.22" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/layout/any.xml" value="0.1" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/layout/bottomsheet_seatnum.xml" value="0.33" />
+        <entry key="..\:/Users/lkjhm/AndroidStudioProjects/MyWay2/app/src/main/res/menu/bottom_menu.xml" value="0.31927083333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable-v24/ic_subinfo_line2.xml" value="0.206" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_elevator.xml" value="0.232" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/drawable/ic_ellipse_89.xml" value="0.206" />
@@ -31,19 +55,6 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/layout/activity_sign_up.xml" value="0.21936936936936938" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/layout/activity_subway_info.xml" value="0.264" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MyWay/app/src/main/res/menu/bottom_menu.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/youn6/AndroidStudioProjects/MyWay_2/app/src/main/res/drawable/btn_corners.xml" value="0.143" />
-        <entry key="..\:/Users/youn6/AndroidStudioProjects/MyWay_2/app/src/main/res/drawable/btn_edit_corners.xml" value="0.143" />
-        <entry key="..\:/Users/youn6/AndroidStudioProjects/MyWay_2/app/src/main/res/drawable/search_border.xml" value="0.143" />
-        <entry key="..\:/Users/youn6/AndroidStudioProjects/MyWay_2/app/src/main/res/drawable/shape_blue.xml" value="0.143" />
-        <entry key="..\:/Users/youn6/AndroidStudioProjects/MyWay_2/app/src/main/res/drawable/shape_gray.xml" value="0.143" />
-        <entry key="..\:/Users/youn6/AndroidStudioProjects/MyWay_2/app/src/main/res/layout/activity_empty_seat.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/youn6/AndroidStudioProjects/MyWay_2/app/src/main/res/layout/activity_facilities.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/youn6/AndroidStudioProjects/MyWay_2/app/src/main/res/layout/activity_login.xml" value="0.2" />
-        <entry key="..\:/Users/youn6/AndroidStudioProjects/MyWay_2/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/youn6/AndroidStudioProjects/MyWay_2/app/src/main/res/layout/activity_qrscan.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/youn6/AndroidStudioProjects/MyWay_2/app/src/main/res/layout/activity_settings.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/youn6/AndroidStudioProjects/MyWay_2/app/src/main/res/layout/activity_sign_up.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/youn6/AndroidStudioProjects/MyWay_2/app/src/main/res/layout/activity_subway_info.xml" value="0.12132725430597771" />
       </map>
     </option>
   </component>

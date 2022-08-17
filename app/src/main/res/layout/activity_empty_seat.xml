@@ -75,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/facilities_layout1">
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/editSubwayName"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -85,7 +85,7 @@
             android:paddingStart="20dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="태릉입구역 6호선"
+            android:text="혜화"
             android:textSize="15dp" />
 
         <ImageButton
@@ -121,8 +121,8 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="70dp"
+        android:id="@+id/TextdestUp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
@@ -134,7 +134,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <TextView
-        android:id="@+id/textView34"
+        android:id="@+id/TextdestDn"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -155,7 +155,7 @@
         android:text="응암순환"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/TextdestUp" />
 
     <TextView
         android:id="@+id/textView35"
@@ -166,7 +166,7 @@
         android:text="봉화산"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView34" />
+        app:layout_constraintTop_toBottomOf="@+id/TextdestDn" />
 
     <TextView
         android:id="@+id/textView4"
@@ -271,14 +271,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/upTextview1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
+        android:layout_marginStart="56dp"
         android:layout_marginTop="14dp"
         android:text="3분"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/TextdestUp" />
 
     <TextView
         android:id="@+id/textView24"
@@ -344,7 +344,7 @@
         android:text="0석"
         android:textColor="#959595"
         app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/upTextview1" />
 
     <TextView
         android:id="@+id/textView8"
@@ -467,7 +467,7 @@
         android:text="0석"
         android:textColor="#959595"
         app:layout_constraintStart_toEndOf="@+id/textView13"
-        app:layout_constraintTop_toBottomOf="@+id/textView40" />
+        app:layout_constraintTop_toBottomOf="@+id/upTextview2" />
 
     <TextView
         android:id="@+id/textView42"
@@ -481,12 +481,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textView41" />
 
     <TextView
-        android:id="@+id/textView40"
+        android:id="@+id/upTextview2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginTop="20dp"
-        android:text="3분"
+        android:text="8분"
         app:layout_constraintStart_toEndOf="@+id/textView21"
         app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
@@ -697,24 +697,24 @@
         app:layout_constraintTop_toBottomOf="@+id/textView48" />
 
     <TextView
-        android:id="@+id/textView100"
+        android:id="@+id/dnTextview2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginTop="18dp"
-        android:text="4분"
+        android:text="11분"
         app:layout_constraintStart_toEndOf="@+id/textView55"
         app:layout_constraintTop_toBottomOf="@+id/textView113" />
 
     <TextView
-        android:id="@+id/textView101"
+        android:id="@+id/dnTextview1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
+        android:layout_marginStart="56dp"
         android:layout_marginTop="16dp"
-        android:text="11분"
+        android:text="4분"
         app:layout_constraintStart_toEndOf="@+id/textView35"
-        app:layout_constraintTop_toBottomOf="@+id/textView34" />
+        app:layout_constraintTop_toBottomOf="@+id/TextdestDn" />
 
     <TextView
         android:id="@+id/textView102"
@@ -780,7 +780,7 @@
         android:text="2석"
         android:textColor="@color/blue_top"
         app:layout_constraintStart_toEndOf="@+id/textView36"
-        app:layout_constraintTop_toBottomOf="@+id/textView101" />
+        app:layout_constraintTop_toBottomOf="@+id/dnTextview1" />
 
     <TextView
         android:id="@+id/textView108"
@@ -824,7 +824,7 @@
         android:text="2석"
         android:textColor="@color/blue_top"
         app:layout_constraintStart_toEndOf="@+id/textView48"
-        app:layout_constraintTop_toBottomOf="@+id/textView100" />
+        app:layout_constraintTop_toBottomOf="@+id/dnTextview2" />
 
     <TextView
         android:id="@+id/textView112"

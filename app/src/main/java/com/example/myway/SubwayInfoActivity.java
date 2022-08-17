@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -43,6 +45,7 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
     private static NaverMap naverMap;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
     private FusedLocationSource locationSource;
+
 
     String geoquery;
     ImageView submap;
@@ -121,11 +124,13 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
             }
         });
 
+
         SubApiData apiData = new SubApiData();
         ArrayList<SubData> dataArr = apiData.getData();
         ArrayList<SubXYData> xydataArr = new ArrayList<SubXYData>();
 
 
+        //위도 경도 값 리스트에 추가
         new Thread(()->{
             BufferedReader bufferedReader;
             StringBuilder stringBuilder = new StringBuilder();
@@ -180,7 +185,12 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
             }
 
         }).start();
+        
+        //가장 가까운 역 찾기
+
     }
+
+
 
     public class SubXYData{
         String name;
@@ -243,7 +253,7 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
     public class SubApiData{
         String key="$2a$10$IMtzc.n1u/g.L0xL28M/ueJt10zkC4ZDIhrwz8xLLBKl709PHJilq";
         String stationApiURL="https://openapi.kric.go.kr/openapi/convenientInfo/stationInfo?serviceKey=";
-        String result = stationApiURL + key+ "&format=xml&railOprIsttCd=S5&lnCd=5";
+        String result = stationApiURL + key+ "&format=xml&railOprIsttCd=S5&lnCd=6";
 
         public ArrayList<SubData> getData(){
             ArrayList<SubData> dataArr = new ArrayList<SubData>();
@@ -269,8 +279,9 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
                                 case XmlPullParser.START_TAG:
                                     tagName = parser.getName();
                                     if (parser.getName().equals("item")) {
-
+                                        data = new SubData();
                                     }
+                                    break;
                                 case XmlPullParser.END_TAG:
                                     if (parser.getName().equals("item")) {
                                         dataArr.add(data);
@@ -289,8 +300,10 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
                                             break;
                                         }
                                     }
+                                    break;
                             }
                             eventType = parser.next();
+
                         }
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
@@ -303,9 +316,10 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
                     }
                 }
             };
-            try{
+            try {
                 t.start();
                 t.join();
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

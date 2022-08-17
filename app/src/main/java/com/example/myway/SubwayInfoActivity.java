@@ -53,6 +53,7 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
 
     ArrayList<SubXYData> xydataArr = new ArrayList<SubXYData>();
 
+    String afname;
     String geoquery;
     ImageView submap;
     ImageView refresh;
@@ -330,13 +331,16 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
             @Override
             public void onClick(View view) {
                 for (int i = 0; i < xydataArr.size(); i++) {
+                    if (xydataArr.get(i).getName().indexOf("(") != -1) {
+                        afname=xydataArr.get(i).getName().substring(0,xydataArr.get(i).getName().indexOf("("));
+                    }else{
+                        afname=xydataArr.get(i).getName();
+                    }
                     if (editSubwayName.getText().toString().equals(xydataArr.get(i).getName())) {
                         resultname = xydataArr.get(i).getName();
                         resultx = xydataArr.get(i).getX();
                         resulty = xydataArr.get(i).getY();
                         setMarker(marker, resultx, resulty, R.drawable.ic_subinfo_marker,0);
-                        Log.e("tag", String.valueOf(resultx));
-                        Log.e("tag", String.valueOf(resulty));
                         break;
                     }
                 }

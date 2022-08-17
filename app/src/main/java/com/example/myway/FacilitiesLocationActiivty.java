@@ -5,10 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.naver.maps.geometry.LatLng;
+import com.naver.maps.map.CameraUpdate;
 import com.naver.maps.map.LocationTrackingMode;
 import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
@@ -18,6 +22,21 @@ import com.naver.maps.map.overlay.Marker;
 import com.naver.maps.map.overlay.OverlayImage;
 import com.naver.maps.map.util.FusedLocationSource;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+
 
 public class FacilitiesLocationActiivty extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -26,8 +45,19 @@ public class FacilitiesLocationActiivty extends AppCompatActivity implements OnM
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
     private FusedLocationSource locationSource;
 
+    ArrayList<SubXYData> xydataArr = new ArrayList<SubXYData>();
+
+    String geoquery;
+    String afname;
+    String resultname;
+    double resultx;
+    double resulty;
+
     ImageView btnPrev;
     ImageView myLocation;
+
+    EditText editSubwayName;
+    ImageButton btnsearch;
 
     Marker nr_marker1 = new Marker();
     Marker nr_marker2 = new Marker();
@@ -185,6 +215,9 @@ public class FacilitiesLocationActiivty extends AppCompatActivity implements OnM
         btnPrev = findViewById(R.id.btnPrev);
         myLocation = findViewById(R.id.facilities_mylocation);
 
+        editSubwayName = findViewById(R.id.editSubwayName);
+        btnsearch = findViewById(R.id.btnsearch);
+
         mapView = (MapView) findViewById(R.id.facilities_map);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
@@ -209,7 +242,226 @@ public class FacilitiesLocationActiivty extends AppCompatActivity implements OnM
                 overridePendingTransition(0,0);
             }
         });
+
+
+        SubApiData apiData = new SubApiData();
+        ArrayList<SubData> dataArr = apiData.getData();
+
+
+
+        //위도 경도 값 리스트에 추가
+        new Thread(()->{
+            BufferedReader bufferedReader;
+            StringBuilder stringBuilder;
+
+            for(SubData data : dataArr){
+                try {
+                    stringBuilder = new StringBuilder();
+                    geoquery = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=" + URLEncoder.encode(data.getAdr(),"UTF-8");
+                    URL geourl = new URL(geoquery);
+                    HttpURLConnection conn = (HttpURLConnection) geourl.openConnection();
+                    if(conn!=null){
+                        conn.setConnectTimeout(5000);
+                        conn.setReadTimeout(5000);
+                        conn.setRequestMethod("GET");
+                        conn.setRequestProperty("X-NCP-APIGW-API-KEY-ID","13tfim55ik");
+                        conn.setRequestProperty("X-NCP-APIGW-API-KEY","x0xNEmBmdoSN0iO4HLywQuoH2WNydnzZOxVhUG6Y");
+                        conn.setDoInput(true);
+
+                        int responseCode = conn.getResponseCode();
+                        if(responseCode ==200){
+                            bufferedReader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                        }else{
+                            bufferedReader = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+                        }
+
+                        String line = null;
+                        while((line = bufferedReader.readLine())!=null){
+                            stringBuilder.append(line+"\n");
+                        }
+
+                        int indexFirst;
+                        int indexLast;
+
+                        indexFirst = stringBuilder.indexOf("\"x\":\"");
+                        indexLast = stringBuilder.indexOf("\",\"y\":");
+                        double x = Double.parseDouble(stringBuilder.substring(indexFirst+5,indexLast));
+
+                        indexFirst = stringBuilder.indexOf("\"y\":\"");
+                        indexLast = stringBuilder.indexOf("\",\"distance\":");
+                        double y = Double.parseDouble(stringBuilder.substring(indexFirst+5,indexLast));
+
+                        xydataArr.add(new SubXYData(data.getName(),y,x));
+
+                        bufferedReader.close();
+                        conn.disconnect();
+                    }
+                } catch (UnsupportedEncodingException | MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }).start();
+
+        btnsearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                for (int i = 0; i < xydataArr.size(); i++) {
+                    if (xydataArr.get(i).getName().indexOf("(") != -1) {
+                        afname=xydataArr.get(i).getName().substring(0,xydataArr.get(i).getName().indexOf("("));
+                    }else{
+                        afname=xydataArr.get(i).getName();
+                    }
+                    if (editSubwayName.getText().toString().equals(afname)) {
+                        resultname = xydataArr.get(i).getName();
+                        resultx = xydataArr.get(i).getX();
+                        resulty = xydataArr.get(i).getY();
+                        break;
+                    }
+                }
+                CameraUpdate cameraUpdate = CameraUpdate.scrollTo(new LatLng(resultx, resulty));
+                naverMap.moveCamera(cameraUpdate);
+            }
+        });
         
+    }
+
+    public class SubXYData{
+        String name;
+        double x;
+        double y;
+
+        public SubXYData(String name, double x, double y) {
+            this.name = name;
+            this.x = x;
+            this.y = y;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public double getX() {
+            return x;
+        }
+
+        public void setX(double x) {
+            this.x = x;
+        }
+
+        public double getY() {
+            return y;
+        }
+
+        public void setY(double y) {
+            this.y = y;
+        }
+    }
+
+    public class SubData{
+        String name;
+        String adr;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getAdr() {
+            return adr;
+        }
+
+        public void setAdr(String adr) {
+            this.adr = adr;
+        }
+    }
+
+    //지하철역 API 받아오기
+    public class SubApiData{
+        String key="$2a$10$IMtzc.n1u/g.L0xL28M/ueJt10zkC4ZDIhrwz8xLLBKl709PHJilq";
+        String stationApiURL="https://openapi.kric.go.kr/openapi/convenientInfo/stationInfo?serviceKey=";
+        String result = stationApiURL + key+ "&format=xml&railOprIsttCd=S5&lnCd=6";
+
+        public ArrayList<SubData> getData(){
+            ArrayList<SubData> dataArr = new ArrayList<SubData>();
+            Thread t = new Thread(){
+                @Override
+                public void run(){
+                    try{
+                        URL url = new URL(result);
+                        InputStream is = url.openStream();
+
+                        XmlPullParserFactory xmlFactory = XmlPullParserFactory.newInstance();
+                        XmlPullParser parser = xmlFactory.newPullParser();
+                        parser.setInput(new InputStreamReader(is, "UTF-8"));
+
+                        String tagName="";
+                        String name="",adr="";
+
+                        //파싱
+                        int eventType = parser.getEventType();
+                        SubData data = new SubData();
+                        while(eventType != XmlPullParser.END_DOCUMENT){
+                            switch(eventType) {
+                                case XmlPullParser.START_TAG:
+                                    tagName = parser.getName();
+                                    if (parser.getName().equals("item")) {
+                                        data = new SubData();
+                                    }
+                                    break;
+                                case XmlPullParser.END_TAG:
+                                    if (parser.getName().equals("item")) {
+                                        dataArr.add(data);
+                                    }
+                                    break;
+                                case XmlPullParser.TEXT:
+                                    switch (tagName) {
+                                        case "stinNm": {
+                                            name = parser.getText();
+                                            data.setName(name);
+                                            break;
+                                        }
+                                        case "lonmAdr": {
+                                            adr = parser.getText();
+                                            data.setAdr(adr);
+                                            break;
+                                        }
+                                    }
+                                    break;
+                            }
+                            eventType = parser.next();
+
+                        }
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (XmlPullParserException e) {
+                        e.printStackTrace();
+                    } catch (IndexOutOfBoundsException e){
+                        e.printStackTrace();
+                    }
+                }
+            };
+            try {
+                t.start();
+                t.join();
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return dataArr;
+        }
+
     }
 
     //마커 설정

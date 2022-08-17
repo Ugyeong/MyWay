@@ -46,6 +46,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_weight="3"
+                android:visibility="invisible"
                 app:srcCompat="@drawable/ic_my_location" />
 
             <TextView
@@ -56,7 +57,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="내 위치"
-                android:textSize="30px" />
+                android:textSize="30px"
+                android:visibility="invisible" />
         </LinearLayout>
 
     </LinearLayout>
@@ -148,12 +150,14 @@
 
     <TextView
         android:id="@+id/destUp1"
-        android:layout_width="60dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="14dp"
         android:text="응암순환"
         android:textSize="16sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintEnd_toStartOf="@+id/upTextview1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TextdestUp" />
 
@@ -272,10 +276,13 @@
 
     <TextView
         android:id="@+id/upTextview1"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
+        android:layout_marginEnd="3dp"
         android:text="3분"
+        android:textAlignment="center"
+        app:autoSizeTextType="uniform"
         app:layout_constraintEnd_toStartOf="@+id/imageView2"
         app:layout_constraintStart_toEndOf="@+id/destUp1"
         app:layout_constraintTop_toBottomOf="@+id/TextdestUp" />
@@ -444,6 +451,7 @@
         android:layout_marginTop="18dp"
         android:text="응암순환"
         android:textSize="16sp"
+        app:autoSizeTextType="uniform"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
@@ -482,11 +490,14 @@
 
     <TextView
         android:id="@+id/upTextview2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="8분"
+        android:text="도착 정보 없음"
+        android:textAlignment="center"
+        app:autoSizeTextType="uniform"
         app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/destUp2"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
@@ -617,7 +628,7 @@
 
     <TextView
         android:id="@+id/destDn2"
-        android:layout_width="60dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="18dp"
@@ -698,20 +709,26 @@
 
     <TextView
         android:id="@+id/dnTextview2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="3dp"
         android:text="도착 정보 없음"
+        android:textAlignment="center"
+        app:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/destDn2"
         app:layout_constraintTop_toBottomOf="@+id/textView54" />
 
     <TextView
         android:id="@+id/dnTextview1"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="3dp"
         android:text="4분"
+        android:textAlignment="center"
+        app:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/destDn1"
         app:layout_constraintTop_toBottomOf="@+id/TextdestDn" />

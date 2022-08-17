@@ -125,83 +125,54 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
                 API api = new API();
                 dataArrTime = api.parse();
 
-                //api.t.start();
-                Log.e("size", String.valueOf(dataArrTime.size()));
                 for (SubDataTime data : dataArrTime) {
-                    Log.e("data",data.getDest());//출력해보기  -> 출력 안 됨
-                    Log.e("data",data.getWay());//출력해보기
-                    //Log.e("data",data.getLine());//출력해보기
-                    Log.e("data",data.getMinute());//출력해보기
-                    //Log.e("data", data.getWay());
-
-                    //호선 정보 서로 비교.
-                    if(data.getLine().equals("1006")) {  //6호선만 가져옴
-
+                    //6호선만 가져옴
+                    if(data.getLine().equals("1006")) {
                         if (data.getWay().equals("상행") && upNum == 0) {
                             destUp1.setText(data.getDest().substring(0, data.getDest().indexOf("행")));  //종점 위치 받아오기
                             destUp2.setText(data.getDest().substring(0, data.getDest().indexOf("행")));  //도착정보가 없을 수 있으니까 종점 위치를 일단 설정하기 위해 추가함
                             TextdestUp.setText(data.getDest().substring(data.getDest().indexOf("-") + 2));
-                            //upTextview1.setText(data.getMinute().substring(0, data.getDest().indexOf("후")));
                             if (data.getMinute().indexOf("후") != -1) {
                                 upTextview1.setText(data.getMinute().substring(0, data.getMinute().indexOf("후")));
                             } else {
                                 upTextview1.setText(data.getMinute());
                             }
-                            //upTextview1.setText(data.getMinute());
                             upNum += 1;
-                            //TextdestUp.setText(data.getDest());
-                            //Log.e("data", "저기");
                             continue;
                         }
                         if (data.getWay().equals("하행") && dnNum == 0) {
                             destDn1.setText(data.getDest().substring(0, data.getDest().indexOf("행")));
                             destDn2.setText(data.getDest().substring(0, data.getDest().indexOf("행")));
                             TextdestDn.setText(data.getDest().substring(data.getDest().indexOf("-") + 2));
-                            //dnTextview1.setText(data.getMinute().substring(0, data.getDest().indexOf("후")));
                             if (data.getMinute().indexOf("후") != -1) {
                                 dnTextview1.setText(data.getMinute().substring(0, data.getMinute().indexOf("후")));
                             } else {
                                 dnTextview1.setText(data.getMinute());
                             }
                             dnNum += 1;
-                            //Log.e("data", "저기");
                             continue;
                         }
                         if (data.getWay().equals("상행") && upNum == 1) {
                             destUp2.setText(data.getDest().substring(0, data.getDest().indexOf("행")));  //종점 위치 받아오기
-                            //TextdestUp.setText(data.getDest().substring(data.getDest().indexOf("-")+2));
-                            //upTextview1.setText(data.getMinute().substring(0, data.getDest().indexOf("후")));
                             if (data.getMinute().indexOf("후") != -1) {
                                 upTextview2.setText(data.getMinute().substring(0, data.getMinute().indexOf("후")));
                             } else {
                                 upTextview2.setText(data.getMinute());
                             }
-                            //upTextview2.setText(data.getMinute());
                             upNum += 1;
-                            //TextdestUp.setText(data.getDest());
-                            //Log.e("data", "저기");
                             continue;
                         }
                         if (data.getWay().equals("하행") && dnNum == 1) {
                             destDn2.setText(data.getDest().substring(0, data.getDest().indexOf("행")));
-                            //TextdestDn.setText(data.getDest().substring(data.getDest().indexOf("-")+2));
-                            //dnTextview1.setText(data.getMinute().substring(0, data.getDest().indexOf("후")));
                             if (data.getMinute().indexOf("후") != -1) {
                                 dnTextview2.setText(data.getMinute().substring(0, data.getMinute().indexOf("후")));
                             } else {
                                 dnTextview2.setText(data.getMinute());
                             }
-                            //dnTextview2.setText(data.getMinute());
                             dnNum += 1;
-                            //Log.e("data", "저기");
                             continue;
                         }
-                    //}
-                    //else{
-                        //Toast.makeText(EmptySeat.this, "a몇 호선",Toast.LENGTH_SHORT);
                     }
-
-                    //Log.e("data", "저기");
                 }
             }
         });
@@ -336,7 +307,8 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
                     }else{
                         afname=xydataArr.get(i).getName();
                     }
-                    if (editSubwayName.getText().toString().equals(xydataArr.get(i).getName())) {
+                    subname.setText(afname);
+                    if (editSubwayName.getText().toString().equals(afname)) {
                         resultname = xydataArr.get(i).getName();
                         resultx = xydataArr.get(i).getX();
                         resulty = xydataArr.get(i).getY();
@@ -544,57 +516,38 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
                         parser.setInput(new InputStreamReader(is, "UTF-8"));
                         String tag = "";
 
-                        //parser.next();
-
                         int parserEvent = parser.getEventType();
 
-                        //Log.e("logcontinued","touched");
-                        //SubData data = new SubData();
                         SubDataTime data = new SubDataTime();
                         while (parserEvent != XmlPullParser.END_DOCUMENT) {
-                            //Log.e("tag", "started");
-                            //data = new SubData();
                             switch (parserEvent) {
-                                /*case XmlPullParser.START_DOCUMENT:
-                                    break;*/
                                 case XmlPullParser.START_TAG:
                                     tag = parser.getName();
                                     if (tag.equals("row")) {
                                         data = new SubDataTime();
                                     }
-                                    //break;
                                 case XmlPullParser.END_TAG:
                                     if (tag.equals("row")) {
                                         dataArr.add(data);
-
-                                        //Log.e("please", "잘 실행되길");//출력해보기
-                                        Log.e("please", String.valueOf(dataArr.size()));
-
                                     }
                                     break;
                                 case XmlPullParser.TEXT:
                                     switch (tag) {
                                         case "subwayId": {
                                             data.setLine(parser.getText());  //호선 입력받기
-                                            //Log.e("data", data.getLine());//출력해보기
                                             break;
                                         }
                                         case "updnLine": {
                                             data.setWay(parser.getText());  //방향 입력받기
-                                            //상행일 경우와 하행일 경우를 나눠서 넣기
-                                            //Log.e("data", data.getWay());//출력해보기
-
                                             break;
                                         }
                                         case "trainLineNm": {
                                             data.setDest(parser.getText());  //어디 행인지 입력받기
-
                                             break;
                                         }
                                         case "arvlMsg2": {
                                             //도착 시간
                                             data.setMinute(parser.getText());
-
                                             break;
                                         }
                                     }
@@ -621,21 +574,6 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-            /*for (SubData data : dataArr) {
-                Log.e("thread",data.getDest());//출력해보기  -> 출력 안 됨
-                Log.e("thread",data.getWay());//출력해보기
-                Log.e("thread",data.getLine());//출력해보기
-                Log.e("thread",data.getMinute());//출력해보기
-                //Log.e("data", data.getWay());
-                if (data.getWay().equals("상행")) {
-                    TextdestUp.setText(data.getDest());
-                    //Log.e("data", "저기");
-                }
-                Log.e("data", "저기");
-            }*/
-
-            Log.e("final", String.valueOf(dataArr.size()));
 
             return dataArr;
         }

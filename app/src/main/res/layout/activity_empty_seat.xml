@@ -85,7 +85,7 @@
             android:paddingStart="20dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="태릉입구역 6호선"
+            android:text="혜화"
             android:textSize="15dp" />
 
         <ImageButton
@@ -121,7 +121,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/TextdestUp"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -134,7 +134,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <TextView
-        android:id="@+id/textView34"
+        android:id="@+id/TextdestDn"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -155,7 +155,7 @@
         android:text="응암순환"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/TextdestUp" />
 
     <TextView
         android:id="@+id/textView35"
@@ -166,7 +166,7 @@
         android:text="봉화산"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView34" />
+        app:layout_constraintTop_toBottomOf="@+id/TextdestDn" />
 
     <TextView
         android:id="@+id/textView4"
@@ -274,11 +274,11 @@
         android:id="@+id/upTextview1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
+        android:layout_marginStart="56dp"
         android:layout_marginTop="14dp"
         android:text="3분"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/TextdestUp" />
 
     <TextView
         android:id="@+id/textView24"
@@ -710,11 +710,11 @@
         android:id="@+id/dnTextview1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
+        android:layout_marginStart="56dp"
         android:layout_marginTop="16dp"
         android:text="4분"
         app:layout_constraintStart_toEndOf="@+id/textView35"
-        app:layout_constraintTop_toBottomOf="@+id/textView34" />
+        app:layout_constraintTop_toBottomOf="@+id/TextdestDn" />
 
     <TextView
         android:id="@+id/textView102"

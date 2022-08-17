@@ -68,38 +68,37 @@
     <LinearLayout
         android:id="@+id/subinfo_layout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/search_border"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/subinfo_layout1">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subinfo_layout1"
+        android:layout_marginTop="25dp">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/editSubwayName"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginLeft="30dp"
-            android:layout_weight="7"
-            android:text="주변 지하철"
-            android:textSize="50px" />
-
-        <ImageView
-            android:id="@+id/subinfo_img2"
-            android:layout_width="10dp"
-            android:layout_height="20dp"
-            android:layout_gravity="right"
             android:layout_weight="1"
-            app:srcCompat="@drawable/ic_my_location"
-            app:tint="#000000" />
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="태릉입구"
+            android:textSize="15dp"/>
 
-        <TextView
+        <ImageButton
+            android:id="@+id/btnsearch"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginRight="15dp"
-            android:layout_weight="1"
-            android:gravity="left"
-            android:text="서울, 노원구"
-            android:textSize="40px" />
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:backgroundTint="#00FFFFFF"
+            app:srcCompat="@drawable/ic_baseline_search_24" />
     </LinearLayout>
 
     <LinearLayout
@@ -134,19 +133,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_weight="2"
+                    android:layout_weight="5"
                     android:gravity="left"
-                    android:text="태릉입구역"
-                    android:textStyle="bold"/>
-
-                <TextView
-                    android:id="@+id/subinfo_subline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:layout_weight="3"
-                    android:text="6호선"
-                    android:textColor="#A95623"
+                    android:hint="태릉입구역"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -154,7 +143,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:layout_weight="3"
+                    android:layout_weight="1"
                     android:text="오전 2:11 기준" />
 
                 <ImageView
@@ -162,7 +151,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:gravity="right"
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:layout_marginRight="10dp"
                     app:srcCompat="@drawable/ic_subinfo_refresh" />
 

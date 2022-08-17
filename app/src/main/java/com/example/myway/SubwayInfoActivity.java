@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 import com.naver.maps.geometry.LatLng;
+import com.naver.maps.map.CameraAnimation;
+import com.naver.maps.map.CameraUpdate;
 import com.naver.maps.map.LocationTrackingMode;
 import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
@@ -213,10 +215,10 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
                         break;
                     }
                 }
+                CameraUpdate cameraUpdate = CameraUpdate.scrollTo(new LatLng(resultx, resulty));
+                naverMap.moveCamera(cameraUpdate);
             }
         });
-        //mapView.getMapAsync(this);
-
     }
 
 
@@ -391,6 +393,7 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
         this.naverMap = naverMap;
         naverMap.setLocationSource(locationSource);
         naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
+
     }
 
     @Override

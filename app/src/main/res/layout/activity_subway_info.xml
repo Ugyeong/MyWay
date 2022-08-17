@@ -135,7 +135,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_weight="5"
                     android:gravity="left"
-                    android:text="태릉입구역"
+                    android:hint="태릉입구역"
                     android:textStyle="bold"/>
 
                 <TextView

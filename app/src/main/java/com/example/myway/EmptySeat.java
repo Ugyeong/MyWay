@@ -40,6 +40,11 @@ public class EmptySeat extends AppCompatActivity {
     TextView dnTextview1;
     TextView dnTextview2;
     TextView TextdestUp;
+    TextView TextdestDn;
+    TextView destUp1;
+    TextView destUp2;
+    TextView destDn1;
+    TextView destDn2;
 
     String apiURL = "http://swopenapi.seoul.go.kr/api/subway/sample/xml/realtimeStationArrival/1/5/";
     String targetURL;
@@ -57,6 +62,10 @@ public class EmptySeat extends AppCompatActivity {
     ArrayList<SubData> dataArr;
     //SubData data;
 
+    String subwayName;
+    String targetSubName;
+    String targetSubLine;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,10 +79,19 @@ public class EmptySeat extends AppCompatActivity {
         dnTextview1 = findViewById(R.id.dnTextview1);
         dnTextview2 = findViewById(R.id.dnTextview2);
         TextdestUp = findViewById(R.id.TextdestUp);
+        TextdestDn = findViewById(R.id.TextdestDn);
+        destUp1 = findViewById(R.id.destUp1);
+        destUp2 = findViewById(R.id.destUp2);
+        destDn1 = findViewById(R.id.destDn1);
+        destDn2 = findViewById(R.id.destDn2);
 
-        targetURL = apiURL + editSubwayName.getText().toString();
-
-        mClient = new OkHttpClient();
+        //지하철 역 몇 호선인지 구분하기
+        subwayName = editSubwayName.getText().toString();
+        targetSubName = subwayName.substring(0, subwayName.indexOf("역"));
+                //destUp2.setText(data.getDest().substring(0,data.getDest().indexOf("행")));
+        targetSubLine = subwayName.substring(subwayName.indexOf("역")+2,subwayName.indexOf("역")+3);
+        //Log.e("line",targetSubLine);
+        targetURL = apiURL + targetSubName;
 
 
         btnPrev.setOnClickListener(new View.OnClickListener() {
@@ -103,14 +121,79 @@ public class EmptySeat extends AppCompatActivity {
                     Log.e("data",data.getLine());//출력해보기
                     Log.e("data",data.getMinute());//출력해보기
                     //Log.e("data", data.getWay());
-                    if (data.getWay().equals("상행")) {
-                        TextdestUp.setText(data.getDest());
+
+                    //data.getLine()  //호선 정보 서로 비교.
+                    //if("100"+targetSubLine ==
+
+                    if (data.getWay().equals("상행") && upNum==0) {
+                        destUp1.setText(data.getDest().substring(0,data.getDest().indexOf("행")));  //종점 위치 받아오기
+                        destUp2.setText(data.getDest().substring(0,data.getDest().indexOf("행")));  //도착정보가 없을 수 있으니까 종점 위치를 일단 설정하기 위해 추가함
+                        TextdestUp.setText(data.getDest().substring(data.getDest().indexOf("-")+2));
+                        //upTextview1.setText(data.getMinute().substring(0, data.getDest().indexOf("후")));
+                        if(data.getMinute().indexOf("후") != -1){
+                            upTextview1.setText(data.getMinute().substring(0, data.getMinute().indexOf("후")));
+                        }
+                        else{
+                            upTextview1.setText(data.getMinute());
+                        }
+                        //upTextview1.setText(data.getMinute());
+                        upNum+=1;
+                        //TextdestUp.setText(data.getDest());
                         //Log.e("data", "저기");
+                        continue;
                     }
+                    if (data.getWay().equals("하행") && dnNum ==0) {
+                        destDn1.setText(data.getDest().substring(0,data.getDest().indexOf("행")));
+                        destDn2.setText(data.getDest().substring(0,data.getDest().indexOf("행")));
+                        TextdestDn.setText(data.getDest().substring(data.getDest().indexOf("-")+2));
+                        //dnTextview1.setText(data.getMinute().substring(0, data.getDest().indexOf("후")));
+                        if(data.getMinute().indexOf("후") != -1){
+                            dnTextview1.setText(data.getMinute().substring(0, data.getMinute().indexOf("후")));
+                        }
+                        else{
+                            dnTextview1.setText(data.getMinute());
+                        }
+                        dnNum+=1;
+                        //Log.e("data", "저기");
+                        continue;
+                    }
+                    if (data.getWay().equals("상행") && upNum==1) {
+                        destUp2.setText(data.getDest().substring(0,data.getDest().indexOf("행")));  //종점 위치 받아오기
+                        //TextdestUp.setText(data.getDest().substring(data.getDest().indexOf("-")+2));
+                        //upTextview1.setText(data.getMinute().substring(0, data.getDest().indexOf("후")));
+                        if(data.getMinute().indexOf("후") != -1){
+                            upTextview2.setText(data.getMinute().substring(0, data.getMinute().indexOf("후")));
+                        }
+                        else{
+                            upTextview2.setText(data.getMinute());
+                        }
+                        //upTextview2.setText(data.getMinute());
+                        upNum+=1;
+                        //TextdestUp.setText(data.getDest());
+                        //Log.e("data", "저기");
+                        continue;
+                    }
+                    if (data.getWay().equals("하행") && dnNum ==1) {
+                        destDn2.setText(data.getDest().substring(0,data.getDest().indexOf("행")));
+                        //TextdestDn.setText(data.getDest().substring(data.getDest().indexOf("-")+2));
+                        //dnTextview1.setText(data.getMinute().substring(0, data.getDest().indexOf("후")));
+                        if(data.getMinute().indexOf("후") != -1){
+                            dnTextview2.setText(data.getMinute().substring(0, data.getMinute().indexOf("후")));
+                        }
+                        else{
+                            dnTextview2.setText(data.getMinute());
+                        }
+                        //dnTextview2.setText(data.getMinute());
+                        dnNum+=1;
+                        //Log.e("data", "저기");
+                        continue;
+                    }
+
                     //Log.e("data", "저기");
                 }
             }
         });
+        btnSearch.performClick();
 
     }
 

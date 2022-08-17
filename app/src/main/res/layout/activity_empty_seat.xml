@@ -85,7 +85,7 @@
             android:paddingStart="20dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="혜화"
+            android:text="태릉입구역 6호선"
             android:textSize="15dp" />
 
         <ImageButton
@@ -135,7 +135,7 @@
 
     <TextView
         android:id="@+id/TextdestDn"
-        android:layout_width="70dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
@@ -147,7 +147,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/destUp1"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -158,7 +158,7 @@
         app:layout_constraintTop_toBottomOf="@+id/TextdestUp" />
 
     <TextView
-        android:id="@+id/textView35"
+        android:id="@+id/destDn1"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -176,7 +176,7 @@
         android:layout_marginTop="12dp"
         android:text="1번 칸"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/destUp1" />
 
     <TextView
         android:id="@+id/textView36"
@@ -186,7 +186,7 @@
         android:layout_marginTop="12dp"
         android:text="1번 칸"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView35" />
+        app:layout_constraintTop_toBottomOf="@+id/destDn1" />
 
     <TextView
         android:id="@+id/textView6"
@@ -274,10 +274,10 @@
         android:id="@+id/upTextview1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
         android:layout_marginTop="14dp"
         android:text="3분"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/destUp1"
         app:layout_constraintTop_toBottomOf="@+id/TextdestUp" />
 
     <TextView
@@ -404,7 +404,7 @@
         android:layout_marginTop="12dp"
         android:text="1번 칸"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+        app:layout_constraintTop_toBottomOf="@+id/destUp2" />
 
     <TextView
         android:id="@+id/textView18"
@@ -437,8 +437,8 @@
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <TextView
-        android:id="@+id/textView21"
-        android:layout_width="60dp"
+        android:id="@+id/destUp2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="18dp"
@@ -484,11 +484,11 @@
         android:id="@+id/upTextview2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
         android:layout_marginTop="20dp"
         android:text="8분"
-        app:layout_constraintStart_toEndOf="@+id/textView21"
-        app:layout_constraintTop_toBottomOf="@+id/textView28" />
+        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/destUp2"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <TextView
         android:id="@+id/textView43"
@@ -613,10 +613,10 @@
         android:layout_marginTop="12dp"
         android:text="1번 칸"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView55" />
+        app:layout_constraintTop_toBottomOf="@+id/destDn2" />
 
     <TextView
-        android:id="@+id/textView55"
+        android:id="@+id/destDn2"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -700,20 +700,20 @@
         android:id="@+id/dnTextview2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="18dp"
-        android:text="11분"
-        app:layout_constraintStart_toEndOf="@+id/textView55"
-        app:layout_constraintTop_toBottomOf="@+id/textView113" />
+        android:layout_marginTop="20dp"
+        android:text="도착 정보 없음"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/destDn2"
+        app:layout_constraintTop_toBottomOf="@+id/textView54" />
 
     <TextView
         android:id="@+id/dnTextview1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
         android:layout_marginTop="16dp"
         android:text="4분"
-        app:layout_constraintStart_toEndOf="@+id/textView35"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/destDn1"
         app:layout_constraintTop_toBottomOf="@+id/TextdestDn" />
 
     <TextView

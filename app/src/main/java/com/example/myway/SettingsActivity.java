@@ -19,9 +19,11 @@ public class SettingsActivity extends AppCompatActivity {
 
     ChipNavigationBar ChipNavigationBar;
     TextView TvName;
+    TextView TvEmail;
     TextView hospital_name;
 
     String name;
+    String email;
     String hospital;
 
     ImageButton btn_rule_set;
@@ -110,16 +112,19 @@ public class SettingsActivity extends AppCompatActivity {
         //hospital = intent.getStringExtra("hospital");
 
         SharedPreferences sharedPreferences = getSharedPreferences("sharedPreferences", Activity.MODE_PRIVATE);
-        name = sharedPreferences.getString("name", null);
-        hospital = sharedPreferences.getString("hospital",null);
+        name = sharedPreferences.getString("name", null); // 회원 이름 받아오기
+        email = sharedPreferences.getString("inputId",null); // 이메일 받아오기
+        hospital = sharedPreferences.getString("hospital",null); // 병원명 받아오기
 
         ChipNavigationBar = findViewById(R.id.ChipNavigationBar);
 
         TvName = findViewById(R.id.name);
+        TvEmail = findViewById(R.id.TvEmail);
         hospital_name = findViewById(R.id.hospital_name);
 
         //설정 액티비티에서 회원 정보 출력하기
         TvName.setText(name);
+        TvEmail.setText(email);
         hospital_name.setText(hospital);
 
         ChipNavigationBar.setItemSelected(R.id.settings,true);  //네비게이션 바 세팅 선택되어 있도록 설정

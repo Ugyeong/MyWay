@@ -64,18 +64,21 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/TvEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="3dp"
+                android:textColor="#959595"
+                android:text="myway@example.com" />
+
+            <TextView
                 android:id="@+id/hospital_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
+                android:textColor="#959595"
                 android:text="블루 산부인과" />
 
-            <TextView
-                android:id="@+id/day_preg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="3dp"
-                android:text="임신 초기 (12주)" />
         </LinearLayout>
 
     </LinearLayout>
@@ -84,7 +87,7 @@
         android:id="@+id/imageView6"
         android:layout_width="93dp"
         android:layout_height="154dp"
-        android:layout_marginStart="55dp"
+        android:layout_marginStart="35dp"
         android:layout_marginTop="75dp"
         app:srcCompat="@drawable/pregnant_character_set" />
 

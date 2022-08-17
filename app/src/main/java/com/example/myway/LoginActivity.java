@@ -46,6 +46,8 @@ public class LoginActivity extends AppCompatActivity {
         BtnLogin = findViewById(R.id.BtnLogin);
         TvSingUp = findViewById(R.id.TvSingUp);
 
+
+        //로그인 유지 기능을 위한 코드
         SharedPreferences sharedPreferences = getSharedPreferences("sharedPreferences", Activity.MODE_PRIVATE);
         loginId = sharedPreferences.getString("inputId", null);
         loginPwd = sharedPreferences.getString("inputPwd", null);

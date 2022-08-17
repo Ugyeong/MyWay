@@ -84,6 +84,7 @@
                 android:layout_marginEnd="27dp"
                 android:background="@drawable/search_border"
                 android:text="중복확인"
+                android:enabled="false"
                 android:textColor="#000000"
                 android:textSize="12sp"
                 android:textStyle="bold"
@@ -131,6 +132,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/btn_edit_corners"
                 android:hint="비밀번호를 입력해주세요"
+                android:enabled="false"
                 android:paddingLeft="10dp"
                 android:inputType="textPassword" />
 
@@ -164,6 +166,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/btn_edit_corners"
                 android:hint="비밀번호를 한 번 더 입력해주세요"
+                android:enabled="false"
                 android:inputType="textPassword"
                 android:paddingLeft="10dp" />
 
@@ -205,6 +208,7 @@
                 android:layout_marginTop="5dp"
                 android:background="@drawable/btn_edit_corners"
                 android:hint="핸드폰 번호를 입력해주세요"
+                android:enabled="false"
                 android:paddingLeft="10dp"
                 tools:ignore="MissingConstraints" />
 
@@ -218,6 +222,7 @@
                 android:layout_marginEnd="27dp"
                 android:background="@drawable/search_border"
                 android:text="인증번호 받기"
+                android:enabled="false"
                 android:textColor="#000000"
                 android:textSize="12sp"
                 android:textStyle="bold"
@@ -247,6 +252,7 @@
             android:layout_marginTop="5dp"
             android:background="@drawable/btn_edit_corners"
             android:hint="인증번호를 입력해주세요"
+            android:enabled="false"
             android:paddingLeft="10dp"
             tools:ignore="MissingConstraints" />
 
@@ -271,6 +277,7 @@
             android:layout_marginBottom="20dp"
             android:background="@drawable/btn_edit_corners"
             android:hint="병원을 입력해주세요"
+            android:enabled="false"
             android:paddingLeft="10dp"
             android:imeOptions="actionSearch"
             android:inputType="text"
@@ -300,12 +307,13 @@
                 android:layout_marginTop="5dp"
                 android:background="@drawable/btn_edit_corners"
                 android:hint="병원 인증코드를 입력해주세요"
+                android:enabled="false"
                 android:paddingLeft="10dp"
                 tools:ignore="MissingConstraints" />
 
             <Button
                 android:id="@+id/BtnHospitalCode"
-                android:layout_width="75dp"
+                android:layout_width="85dp"
                 android:layout_height="40dp"
                 android:layout_gravity="right|top"
                 android:layout_marginStart="32dp"
@@ -313,6 +321,7 @@
                 android:layout_marginEnd="25dp"
                 android:background="@drawable/search_border"
                 android:text="임산부 인증"
+                android:enabled="false"
                 android:textColor="#000000"
                 android:textSize="12sp"
                 android:textStyle="bold"
@@ -415,6 +424,7 @@
             android:layout_marginBottom="20dp"
             android:background="@drawable/btn_corners"
             android:text="회원가입 하기"
+            android:enabled="false"
             android:textColor="#fff"
             android:textSize="25sp"
             android:textStyle="bold"

@@ -145,13 +145,17 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                db = DBManager.getReadableDatabase(); // select문 실행할 것이므로 DB를 읽을 수 있도록 함
 
                email = EditEmail.getText().toString();
+               if(email.isEmpty()){
+                   TvEmailWarning.setText("이메일 형식에 맞지 않습니다");
+                   return;
+               }
                cursor = db.rawQuery("select * from account where email='"+ email+"';", null);
 
                AlertDialog.Builder dlg = new AlertDialog.Builder(SignUpActivity.this); // dialog창을 띄우기 위해 선언
 
                if(cursor.getCount()>0){ // 이미 가입한 이메일일 때
                    dlg.setTitle("사용불가한 이메일");
-                   dlg.setMessage("이미 존재하는 이메일입니다");
+                   dlg.setMessage("이미 존재하는 이메일입니다\n비밀번호 입력창으로 이동할 수 없습니다");
                    dlg.setIcon(R.drawable.app_icon_my);
                    dlg.setPositiveButton("확인", null);
                    dlg.show();
@@ -163,7 +167,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                    dlg.setIcon(R.drawable.app_icon_my);
                    dlg.setPositiveButton("확인", null);
                    dlg.show();
-                   EditPassword.requestFocus();
+
+                   EditPassword.setEnabled(true);
+                   EditPasswordChk.setEnabled(true);
+                   BtnPhoneNumber.setEnabled(true);
+
                }
                cursor.close();
                db.close();
@@ -181,7 +189,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                if(!(phonenumber.length() ==11)){ //휴대전화 번호가 잘못 입력된 형태일 때
                    AlertDialog.Builder dlg = new AlertDialog.Builder(SignUpActivity.this); // dialog창을 띄우기 위해 선언
                    dlg.setTitle("인증번호 수신 실패");
-                   dlg.setMessage("휴대폰 번호를 다시 입력하세요");
+                   dlg.setMessage("휴대폰 번호를 다시 입력하세요\n 병원 입력창으로 이동할 수 없습니다 ");
                    dlg.setIcon(R.drawable.app_icon_my);
                    dlg.setPositiveButton("확인", null);
                    dlg.show();
@@ -195,14 +203,22 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                    String message ="<#> MyWay 앱의 인증번호는 다음과 같습니다.\n"+key_hash;
                    sms.sendTextMessage(phoneNumber, null, message, null, null);
                    compare_hash = key_hash;
+
+                   // 휴대폰 번호를 정상적으로 입력했을 때 휴대폰 인증번호, 임산부 인증이 설정되도록 한다
+                   EditNumberChk.setEnabled(true);
                    EditNumberChk.setText(compare_hash);
+                   EditHospital.setEnabled(true);
+                   EditHospitalCode.setEnabled(true);
+                   BtnHospitalCode.setEnabled(true);
+
+
 
                }
 
            }
 
        });
-       BtnHospitalCode.setOnClickListener(new View.OnClickListener() {
+       BtnHospitalCode.setOnClickListener(new View.OnClickListener() { // 임산부 인증 버튼 눌렀을 때
            @Override
            public void onClick(View view) {
                hospital = EditHospital.getText().toString();
@@ -224,13 +240,13 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
                    if(cursor.getCount()>0){ //임산부 인증 성공
                        TvHospitalCodeWarning.setTextColor(Color.parseColor("#407BFF"));
-                       TvHospitalCodeWarning.setText("임산부 인증에 성공하였습니다");
-                       EditPhoneNumber.requestFocus(); // 포커스를 다음 EditText칸으로 이동시킨다
+                       TvHospitalCodeWarning.setText("임산부 인증 성공");
+                       BtnSignUp.setEnabled(true);
 
                    }
                    else{ //임산부 인증 실패
                        TvHospitalCodeWarning.setTextColor(Color.parseColor("#FF0000")); //빨간색
-                       TvHospitalCodeWarning.setText("임산부 인증에 실패하였습니다");
+                       TvHospitalCodeWarning.setText("임산부 인증 실패\n회원가입 버튼을 누를 수 없습니다");
                    }
 
                    cursor.close();
@@ -245,6 +261,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         BtnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 name = EditName.getText().toString();
                 email = EditEmail.getText().toString();
                 password = EditPassword.getText().toString();
@@ -253,6 +270,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 hospitalCode = EditHospitalCode.getText().toString();
                 phonenumber = EditPhoneNumber.getText().toString();
                 numberchk = EditNumberChk.getText().toString();
+
 
                 DBManager = new DBManager(getApplicationContext(), "MyWay", null,1); //MyWay라는 DB에 접근가능
                 db = DBManager.getWritableDatabase(); // insert문 실행할 것이므로 DB 데이터를 쓸 수 있도록 함
@@ -311,9 +329,10 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void afterTextChanged(Editable editable) {
                 if(!android.util.Patterns.EMAIL_ADDRESS.matcher(editable.toString()).matches()){ //이메일 형식에 맞지 않을 때
-                    TvEmailWarning.setText("이메일 형식에 맞지 않습니다"); //textView에 출력하기
+                    TvEmailWarning.setText("이메일 형식에 맞지 않습니다\n중복확인을 누를 수 없습니다"); //textView에 출력하기
                 }
-                else{
+                else{ //이메일 형식에 맞을 때
+                    BtnEmailChk.setEnabled(true);
                     TvEmailWarning.setText("");
                 }
 
@@ -340,8 +359,9 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 }
                 else{//비밀번호가 일치할 때
                     TvpasswordChkWarning.setText("");
+                    EditPhoneNumber.setEnabled(true); // 비밀번호가 일치할 때 휴대폰 번호를 입력할 수 있도록 함함
+                    EditNumberChk.setEnabled(true); // 휴대폰 인증이 가능하도록 함
                 }
-
             }
         });
     }

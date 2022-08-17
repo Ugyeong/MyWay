@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewDebug;
 import android.view.textclassifier.TextLinks;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -53,7 +54,7 @@ public class EmptySeat extends AppCompatActivity {
     XmlPullParser parser;
     OkHttpClient mClient;
 
-
+    ArrayList<SubData> dataArr;
     //SubData data;
 
     @Override
@@ -92,7 +93,9 @@ public class EmptySeat extends AppCompatActivity {
 
                 API api = new API();
                 //api.parse();  //dataArray 반환됨  ->가져다가 호선 나누고 상행, 하행 나눠서 도착시간 입력하기
-                ArrayList<SubData> dataArr = api.parse();
+                dataArr = api.parse();
+
+                //api.t.start();
                 Log.e("size", String.valueOf(dataArr.size()));
                 for (SubData data : dataArr) {
                     Log.e("data",data.getDest());//출력해보기  -> 출력 안 됨
@@ -104,10 +107,11 @@ public class EmptySeat extends AppCompatActivity {
                         TextdestUp.setText(data.getDest());
                         //Log.e("data", "저기");
                     }
-
+                    //Log.e("data", "저기");
                 }
             }
         });
+
     }
 
     public class SubData {
@@ -149,9 +153,11 @@ public class EmptySeat extends AppCompatActivity {
         }
     }
 
+
     public class API {
         public ArrayList<SubData> parse() {
             ArrayList<SubData> dataArr = new ArrayList<SubData>();
+
             Thread t = new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -167,23 +173,29 @@ public class EmptySeat extends AppCompatActivity {
                         //parser.next();
 
                         int parserEvent = parser.getEventType();
-                        SubData data = new SubData();
+
                         //Log.e("logcontinued","touched");
+                        //SubData data = new SubData();
+                        SubData data = new SubData();
                         while (parserEvent != XmlPullParser.END_DOCUMENT) {
                             //Log.e("tag", "started");
+                            //data = new SubData();
                             switch (parserEvent) {
                                 /*case XmlPullParser.START_DOCUMENT:
                                     break;*/
                                 case XmlPullParser.START_TAG:
                                     tag = parser.getName();
                                     if (tag.equals("row")) {
-
+                                        data = new SubData();
                                     }
                                     //break;
                                 case XmlPullParser.END_TAG:
                                     if (tag.equals("row")) {
                                         dataArr.add(data);
-                                        Log.e("please", "잘 실행되길");//출력해보기
+
+                                        //Log.e("please", "잘 실행되길");//출력해보기
+                                        Log.e("please", String.valueOf(dataArr.size()));
+
                                     }
                                     break;
                                 case XmlPullParser.TEXT:
@@ -232,6 +244,7 @@ public class EmptySeat extends AppCompatActivity {
                                            }*/
                                             break;
                                         }
+                                        //break;
                                     }
 
                                     /*if (tag.equals("updnLine")) {
@@ -259,8 +272,9 @@ public class EmptySeat extends AppCompatActivity {
                                             dnTextview2.setText(parser.getText());  //숫자 가져와서 입력
                                         }
                                     }*/
-
+                                //break;
                             }
+
                             parserEvent = parser.next();
 
                         }
@@ -274,13 +288,35 @@ public class EmptySeat extends AppCompatActivity {
 
                 }
             });
+
+            t.start();
             try{
-                t.start();
                 t.join();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
+            /*for (SubData data : dataArr) {
+                Log.e("thread",data.getDest());//출력해보기  -> 출력 안 됨
+                Log.e("thread",data.getWay());//출력해보기
+                Log.e("thread",data.getLine());//출력해보기
+                Log.e("thread",data.getMinute());//출력해보기
+                //Log.e("data", data.getWay());
+                if (data.getWay().equals("상행")) {
+                    TextdestUp.setText(data.getDest());
+                    //Log.e("data", "저기");
+                }
+                Log.e("data", "저기");
+            }*/
+
+            Log.e("final", String.valueOf(dataArr.size()));
+
             return dataArr;
         }
     }
 }
+
+
+
+
+

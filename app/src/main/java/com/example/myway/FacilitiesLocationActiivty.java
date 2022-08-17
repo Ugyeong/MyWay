@@ -127,6 +127,53 @@ public class FacilitiesLocationActiivty extends AppCompatActivity implements OnM
     Marker nr_marker96 = new Marker();
     Marker nr_marker97 = new Marker();
 
+    Marker el_marker1 = new Marker();
+    Marker el_marker2 = new Marker();
+    Marker el_marker3 = new Marker();
+    Marker el_marker4 = new Marker();
+    Marker el_marker5 = new Marker();
+    Marker el_marker6 = new Marker();
+    Marker el_marker7 = new Marker();
+    Marker el_marker8 = new Marker();
+    Marker el_marker9 = new Marker();
+    Marker el_marker10 = new Marker();
+    Marker el_marker11 = new Marker();
+    Marker el_marker12 = new Marker();
+    Marker el_marker13 = new Marker();
+    Marker el_marker14 = new Marker();
+    Marker el_marker15 = new Marker();
+    Marker el_marker16 = new Marker();
+    Marker el_marker17 = new Marker();
+    Marker el_marker18 = new Marker();
+    Marker el_marker19 = new Marker();
+    Marker el_marker20 = new Marker();
+    Marker el_marker21 = new Marker();
+
+    Marker es_marker1 = new Marker();
+    Marker es_marker2 = new Marker();
+    Marker es_marker3 = new Marker();
+    Marker es_marker4 = new Marker();
+    Marker es_marker5 = new Marker();
+    Marker es_marker6 = new Marker();
+    Marker es_marker7 = new Marker();
+    Marker es_marker8 = new Marker();
+    Marker es_marker9 = new Marker();
+    Marker es_marker10 = new Marker();
+    Marker es_marker11 = new Marker();
+    Marker es_marker12 = new Marker();
+    Marker es_marker13 = new Marker();
+    Marker es_marker14 = new Marker();
+    Marker es_marker15 = new Marker();
+    Marker es_marker16 = new Marker();
+    Marker es_marker17 = new Marker();
+    Marker es_marker18 = new Marker();
+    Marker es_marker19 = new Marker();
+    Marker es_marker20 = new Marker();
+    Marker es_marker21 = new Marker();
+    Marker es_marker22 = new Marker();
+    Marker es_marker23 = new Marker();
+
+
 
 
 
@@ -289,7 +336,58 @@ public class FacilitiesLocationActiivty extends AppCompatActivity implements OnM
         setMarker(nr_marker95, 37.51935434737242, 127.13872040712096 ,R.drawable.ic_facilities_nursing_room_marker,0);
         setMarker(nr_marker96, 37.50243473176825, 127.09681067456012,R.drawable.ic_facilities_nursing_room_marker,0);
         setMarker(nr_marker97, 37.528780390388526, 127.14854648920972,R.drawable.ic_facilities_nursing_room_marker,0);
+    }
 
+    public void insert_elmarker(){
+        setMarker(el_marker1,37.61249714582315, 127.10344861627428,R.drawable.ic_facilities_elevator_marker,0);
+        setMarker(el_marker2,37.61312780720865, 127.10348346808472,R.drawable.ic_facilities_elevator_marker,0);
+        setMarker(el_marker3,37.613456647714365, 127.10350657599761,R.drawable.ic_facilities_elevator_marker,0);
+        setMarker(el_marker4,37.616950180870305, 127.09272845076022 ,R.drawable.ic_facilities_elevator_marker,0);
+        setMarker(el_marker5,37.61740228932314, 127.09065055983976,R.drawable.ic_facilities_elevator_marker,0);
+        setMarker(el_marker6,37.62010109405623, 127.08409826252499,R.drawable.ic_facilities_elevator_marker,0);
+        setMarker(el_marker7,37.61723986465046, 127.07495156750365,R.drawable.ic_facilities_elevator_marker,0);
+        setMarker(el_marker8,37.61820599156977, 127.07523854000885,R.drawable.ic_facilities_elevator_marker,0);
+        setMarker(el_marker9,37.614999788605985, 127.06547765627205 ,R.drawable.ic_facilities_elevator_marker,0);
+        setMarker(el_marker10,37.61480077399582, 127.06689893532466 ,R.drawable.ic_facilities_elevator_marker,0);
+        setMarker(el_marker11,37.61101661402063, 127.07792399347807 ,R.drawable.ic_facilities_elevator_marker,0);
+        setMarker(el_marker12,37.6255728053379, 127.07326357224699 ,R.drawable.ic_facilities_elevator_marker,0);
+        setMarker(el_marker13,37.637286569643834, 127.06791327522212 ,R.drawable.ic_facilities_elevator_marker,0);
+        setMarker(el_marker14,37.63694890858137, 127.06755041799148,R.drawable.ic_facilities_elevator_marker,0);
+        setMarker(el_marker15,37.644949409431106, 127.06394027280929 ,R.drawable.ic_facilities_elevator_marker,0);
+        setMarker(el_marker16,37.60237980962135, 127.07915501010424 ,R.drawable.ic_facilities_elevator_marker,0);
+        setMarker(el_marker17,37.61103983912121, 127.05699685819786 ,R.drawable.ic_facilities_elevator_marker,0);
+        setMarker(el_marker18,37.62290568711701, 127.06180030330083 ,R.drawable.ic_facilities_elevator_marker,0);
+        setMarker(el_marker19,37.63196216717911, 127.05873483066138 ,R.drawable.ic_facilities_elevator_marker,0);
+        setMarker(el_marker20,37.64571928541454, 127.05102640633827 ,R.drawable.ic_facilities_elevator_marker,0);
+        setMarker(el_marker21,37.64566078877242, 127.05087056495856 ,R.drawable.ic_facilities_elevator_marker,0);
+
+
+    }
+
+    public void insert_esmarker(){
+        setMarker(es_marker1,37.6127093729313, 127.10288261009552,R.drawable.ic_facilities_escalator_marker,0);
+        setMarker(es_marker2,37.61646583352836, 127.09281279857902,R.drawable.ic_facilities_escalator_marker,0);
+        setMarker(es_marker3,37.61962317825069, 127.08464708629546 ,R.drawable.ic_facilities_escalator_marker,0);
+        setMarker(es_marker4,37.620914369634995, 127.08390944719812,R.drawable.ic_facilities_escalator_marker,0);
+        setMarker(es_marker5,37.617673815052385, 127.07616396625144,R.drawable.ic_facilities_escalator_marker,0);
+        setMarker(es_marker6,37.6179847104707, 127.07607933234117,R.drawable.ic_facilities_escalator_marker,0);
+        setMarker(es_marker7,37.61912718231457, 127.07534707458936,R.drawable.ic_facilities_escalator_marker,0);
+        setMarker(es_marker8,37.61444353833539, 127.06527895882613,R.drawable.ic_facilities_escalator_marker,0);
+        setMarker(es_marker9,37.614708496498544, 127.06676860010118,R.drawable.ic_facilities_escalator_marker,0);
+        setMarker(es_marker10,37.61548510513157, 127.06763576615533,R.drawable.ic_facilities_escalator_marker,0);
+        setMarker(es_marker11,37.61174680748798, 127.07732731627753 ,R.drawable.ic_facilities_escalator_marker,0);
+        setMarker(es_marker12,37.611163019009446,127.07793264056106 ,R.drawable.ic_facilities_escalator_marker,0);
+        setMarker(es_marker13,37.62587726115775, 127.07266065489577 ,R.drawable.ic_facilities_escalator_marker,0);
+        setMarker(es_marker14,37.63645722448718, 127.06867160421197 ,R.drawable.ic_facilities_escalator_marker,0);
+        setMarker(es_marker15,37.63607199746926, 127.06876755086293 ,R.drawable.ic_facilities_escalator_marker,0);
+        setMarker(es_marker16,37.63551393779125, 127.06781536138854 ,R.drawable.ic_facilities_escalator_marker,0);
+        setMarker(es_marker17,37.64406396986741, 127.06435025407195,R.drawable.ic_facilities_escalator_marker,0);
+        setMarker(es_marker18,37.644052417454304, 127.06487995728725,R.drawable.ic_facilities_escalator_marker,0);
+        setMarker(es_marker19,37.64594949936768, 127.06394396285573 ,R.drawable.ic_facilities_escalator_marker,0);
+        setMarker(es_marker20,37.601735516509436, 127.07928172631293 ,R.drawable.ic_facilities_escalator_marker,0);
+        setMarker(es_marker21,37.61092468405942, 127.05757155140759 ,R.drawable.ic_facilities_escalator_marker,0);
+        setMarker(es_marker22,37.610454364128714, 127.05664814720761 ,R.drawable.ic_facilities_escalator_marker,0);
+        setMarker(es_marker23,37.63162652046349, 127.05879404310193 ,R.drawable.ic_facilities_escalator_marker,0);
 
     }
 
@@ -310,6 +408,8 @@ public class FacilitiesLocationActiivty extends AppCompatActivity implements OnM
         naverMap.setLocationSource(locationSource);
         naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
         insert_nrmarker();
+        insert_elmarker();
+        insert_esmarker();
     }
 
     @Override

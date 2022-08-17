@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,12 +48,20 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
     private FusedLocationSource locationSource;
 
+    ArrayList<SubXYData> xydataArr = new ArrayList<SubXYData>();
 
     String geoquery;
     ImageView submap;
     ImageView refresh;
 
     TextView subname;
+    EditText editSubwayName;
+    ImageButton btnsearch;
+    Marker marker = new Marker();
+
+    String resultname;
+    double resultx;
+    double resulty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +72,8 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
         refresh = findViewById(R.id.subinfo_refresh);
 
         subname = findViewById(R.id.subinfo_subname);
+        editSubwayName = findViewById(R.id.editSubwayName);
+        btnsearch = findViewById(R.id.btnsearch);
 
         ChipNavigationBar = findViewById(R.id.ChipNavigationBar);
         mapView = (MapView) findViewById(R.id.subinfo_map);
@@ -80,6 +92,7 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
             }
         });
         ChipNavigationBar.setItemSelected(R.id.subway,true);  //네비게이션 바 지하철 선택되어 있도록 설정
+
 
         //해당 액티비티 새로고침
         refresh.setOnClickListener(new View.OnClickListener() {
@@ -127,16 +140,17 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
 
         SubApiData apiData = new SubApiData();
         ArrayList<SubData> dataArr = apiData.getData();
-        ArrayList<SubXYData> xydataArr = new ArrayList<SubXYData>();
+
 
 
         //위도 경도 값 리스트에 추가
         new Thread(()->{
             BufferedReader bufferedReader;
-            StringBuilder stringBuilder = new StringBuilder();
+            StringBuilder stringBuilder;
 
             for(SubData data : dataArr){
                 try {
+                    stringBuilder = new StringBuilder();
                     geoquery = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=" + URLEncoder.encode(data.getAdr(),"UTF-8");
                     URL geourl = new URL(geoquery);
                     HttpURLConnection conn = (HttpURLConnection) geourl.openConnection();
@@ -171,7 +185,7 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
                         indexLast = stringBuilder.indexOf("\",\"distance\":");
                         double y = Double.parseDouble(stringBuilder.substring(indexFirst+5,indexLast));
 
-                        xydataArr.add(new SubXYData(data.getName(),x,y));
+                        xydataArr.add(new SubXYData(data.getName(),y,x));
 
                         bufferedReader.close();
                         conn.disconnect();
@@ -181,15 +195,29 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
             }
 
         }).start();
-        
-        //가장 가까운 역 찾기
+
+        btnsearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                for (int i = 0; i < xydataArr.size(); i++) {
+                    if (editSubwayName.getText().toString().equals(xydataArr.get(i).getName())) {
+                        resultname = xydataArr.get(i).getName();
+                        resultx = xydataArr.get(i).getX();
+                        resulty = xydataArr.get(i).getY();
+                        setMarker(marker, resultx, resulty, R.drawable.ic_subinfo_marker,0);
+                        Log.e("tag", String.valueOf(resultx));
+                        Log.e("tag", String.valueOf(resulty));
+                        break;
+                    }
+                }
+            }
+        });
+        //mapView.getMapAsync(this);
 
     }
-
 
 
     public class SubXYData{
@@ -327,6 +355,24 @@ public class SubwayInfoActivity extends AppCompatActivity implements OnMapReadyC
         }
 
     }
+
+    //마커 설정
+    private void setMarker(Marker marker, double lat, double lng, int resourceID, int zIndex)
+    {
+        marker.setWidth(200);
+        marker.setHeight(250);
+        //원근감 표시
+        marker.setIconPerspectiveEnabled(true);
+        //아이콘 지정
+        marker.setIcon(OverlayImage.fromResource(resourceID));
+        //마커 위치
+        marker.setPosition(new LatLng(lat, lng));
+        //마커 우선순위
+        marker.setZIndex(zIndex);
+        //마커 표시
+        marker.setMap(naverMap);
+    }
+
 
     //지도 설정
     @Override

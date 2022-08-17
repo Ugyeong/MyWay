@@ -106,10 +106,7 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        //인텐트 전달받기
-        //Intent intent = getIntent();
-        //name = intent.getStringExtra("name");
-        //hospital = intent.getStringExtra("hospital");
+
 
         SharedPreferences sharedPreferences = getSharedPreferences("sharedPreferences", Activity.MODE_PRIVATE);
         name = sharedPreferences.getString("name", null); // 회원 이름 받아오기

@@ -145,6 +145,6 @@
         android:scaleType="fitCenter"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="420dp"
-        app:srcCompat="@drawable/btn_logout_set" />-->
+        app:srcCompat="@drawable/btn_logout_set" />
 
 </FrameLayout>

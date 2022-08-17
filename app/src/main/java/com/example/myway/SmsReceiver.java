@@ -23,8 +23,6 @@ public class SmsReceiver extends BroadcastReceiver {
                     String message = (String) extras.get(SmsRetriever.EXTRA_SMS_MESSAGE);
                     ObservableObject.getInstance().updateValue(message);
                     Log.d("TAG", "SmsReceiver : onReceiver(CommonStatusCodes.SUCCESS)");
-                    Log.d("TAG", "message : "+message);
-
                     break;
                 case CommonStatusCodes.TIMEOUT: //타임아웃 기본값 5분
                     Log.d("TAG", "SmsReceiver : onReceiver(CommonStatusCodes.TIMEOUT)");

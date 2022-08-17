@@ -87,8 +87,6 @@ public class LoginActivity extends AppCompatActivity {
                        autoLogin.commit();
 
                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                       //intent.putExtra("name",name);
-                       //intent.putExtra("hospital", hospital);
                        startActivity(intent);
                    }
                 }

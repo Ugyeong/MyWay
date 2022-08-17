@@ -402,7 +402,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 }
             }
         } catch (PackageManager.NameNotFoundException e) {
-            Log.d("TAG", "Unable to find package to obtain hash. : " + e.toString());
+
         }
         return hash;
     }
@@ -418,10 +418,9 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             String base64Hash = Base64.encodeToString(hashSignature, Base64.NO_PADDING | Base64.NO_WRAP);
             base64Hash = base64Hash.substring(0, NUM_BASE64_CHAR);
 
-            Log.d("TAG", String.format("\nPackage : %s\nHash : %s", packageName, base64Hash));
+
             return base64Hash;
         } catch (NoSuchAlgorithmException e) {
-            Log.d("TAG", "hash:NoSuchAlgorithm : " + e.toString());
         }
         return null;
     }
